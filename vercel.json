@@ -1,12 +1,9 @@
 {
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "framework": null,
   "cleanUrls": true,
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/((?!privacy|terms).*)", "destination": "/index.html" }
+    { "source": "/((?!privacy|terms|.*\\.).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
