@@ -370,31 +370,41 @@
       text-decoration: none;
     }
 
-    /* ─── Built for ───────────────────────────────────── */
-    .built-grid {
-      margin-top: 56px; display: grid;
-      grid-template-columns: repeat(3, 1fr); gap: 20px;
+
+
+    /* ─── Built for (compact card) ────────────────────── */
+    .built-for-compact { padding: 80px 24px; }
+    .bf-shell {
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: 28px; padding: 56px;
+      display: grid; grid-template-columns: 0.9fr 1.1fr;
+      gap: 64px; align-items: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.03);
     }
-    .built-card {
-      padding: 32px; background: var(--white);
-      border: 2px solid var(--border); border-radius: 18px;
-      transition: transform 0.25s;
+    .bf-left { max-width: 420px; }
+    .bf-title {
+      font-size: clamp(26px, 3vw, 34px); font-weight: 800;
+      letter-spacing: -0.8px; line-height: 1.15;
+      margin-top: 14px; color: var(--ink);
     }
-    .built-card:hover { transform: translateY(-3px); }
-    .built-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      background: var(--cream); display: flex;
-      align-items: center; justify-content: center;
-      margin-bottom: 20px;
+    .bf-sub {
+      margin-top: 14px; font-size: 15px; color: var(--ink-light); line-height: 1.6;
     }
-    .built-icon i { color: var(--ink); width: 22px; height: 22px; }
-    .built-card h4 {
-      font-size: 18px; font-weight: 700; margin-bottom: 8px;
-      letter-spacing: -0.3px;
+    .bf-right {
+      display: flex; flex-wrap: wrap; gap: 10px;
     }
-    .built-card p {
-      font-size: 14px; color: var(--ink-light); line-height: 1.6;
+    .bf-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 18px; background: var(--cream);
+      border: 1.5px solid var(--border); border-radius: 100px;
+      font-size: 14px; font-weight: 600; color: var(--ink);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
     }
+    .bf-chip:hover {
+      transform: translateY(-2px); border-color: var(--ink);
+      background: var(--white);
+    }
+    .bf-chip i { width: 16px; height: 16px; color: var(--ink); flex-shrink: 0; }
 
     /* ─── Luna (full agentic surface) ─────────────────── */
     .luna-wrap {
@@ -932,7 +942,6 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-text">
-      <div class="hero-badge animate-in"><span class="dot"></span> Now in private beta</div>
       <h1 class="animate-in delay-1">The intelligence layer for <span class="accent">modern organisations.</span></h1>
       <p class="sub animate-in delay-2">An AI brain that turns scattered knowledge into answers, actions, and accountability. Built for modern organisations that need to move with intelligence.</p>
       <div class="hero-triad animate-in delay-2">
@@ -1223,7 +1232,7 @@
     </div>
   </section>
 
-  <!-- Built for (compact strip) -->
+  <!-- Built for (compact card) -->
   <section class="section built-for-compact" id="built-for">
     <div class="bf-shell">
       <div class="bf-left">
