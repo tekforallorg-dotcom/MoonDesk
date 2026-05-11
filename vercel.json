@@ -1,22 +1,7 @@
 {
-  "builds": [
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "images/**", "use": "@vercel/static" }
-  ],
   "cleanUrls": true,
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/((?!privacy|terms|.*\\.).*)", "destination": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    }
+    { "source": "/terms", "destination": "/terms.html" }
   ]
 }
