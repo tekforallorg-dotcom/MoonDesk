@@ -525,161 +525,167 @@
       font-size: 12.5px; color: var(--ink-light); line-height: 1.5;
     }
 
-    /* ─── Roadmap ─────────────────────────────────────── */
-    .roadmap-header {
+    /* ─── Roadmap (denser, dual rhythm) ──────────────────── */
+    .rm-header {
       display: flex; align-items: end; justify-content: space-between;
-      gap: 32px; margin-bottom: 56px; flex-wrap: wrap;
+      gap: 40px; margin-bottom: 56px; flex-wrap: wrap;
     }
-    .roadmap-meta {
-      font-family: 'DM Mono', monospace; font-size: 11px;
-      color: rgba(245,240,235,0.5); letter-spacing: 2px;
-      text-transform: uppercase;
+    .rm-header-left { max-width: 720px; }
+    .rm-meta {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
     }
-    .roadmap-columns {
-      display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px;
-    }
-    .roadmap-col {
-      padding: 36px;
+    .rm-meta-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      background: rgba(245,240,235,0.04);
       border: 1px solid rgba(245,240,235,0.12);
+      border-radius: 100px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(245,240,235,0.75);
+    }
+    .rm-meta-pill .dot { width: 6px; height: 6px; border-radius: 50%; }
+    .rm-meta-pill .dot.live {
+      background: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.18);
+    }
+    .rm-meta-pill .dot.next { background: rgba(245,240,235,0.5); }
+    .rm-meta-date {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(245,240,235,0.4);
+    }
+
+    .rm-grid {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px;
+    }
+
+    .rm-col {
+      padding: 32px;
+      border: 1px solid rgba(245,240,235,0.1);
       border-radius: 24px;
       background: rgba(245,240,235,0.025);
       position: relative; overflow: hidden;
     }
-    .roadmap-col.now { border-color: rgba(16,185,129,0.3); }
-    .roadmap-col.now::before {
+    .rm-col-live { border-color: rgba(16,185,129,0.25); }
+    .rm-col-live::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, transparent, #10b981, transparent);
     }
-    .roadmap-col.next { border-color: rgba(245,240,235,0.18); }
-    .roadmap-col-header {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    .rm-col-next::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(245,240,235,0.4), transparent);
     }
-    .roadmap-col-pulse {
-      width: 8px; height: 8px; border-radius: 50%;
+
+    .rm-col-header { margin-bottom: 24px; }
+    .rm-col-head-row {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
     }
-    .roadmap-col.now .roadmap-col-pulse {
-      background: #10b981;
-      box-shadow: 0 0 0 4px rgba(16,185,129,0.2);
+    .rm-pulse { width: 8px; height: 8px; border-radius: 50%; }
+    .rm-pulse.live {
+      background: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,0.2);
       animation: pulse 2s ease-in-out infinite;
     }
-    .roadmap-col.next .roadmap-col-pulse { background: rgba(245,240,235,0.5); }
-    .roadmap-col h3 {
-      font-size: 13px; font-family: 'DM Mono', monospace;
-      letter-spacing: 2px; text-transform: uppercase;
+    .rm-pulse.next { background: rgba(245,240,235,0.5); }
+    .rm-col-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
       color: var(--cream);
     }
-    .roadmap-col.next h3 { color: rgba(245,240,235,0.8); }
-    .roadmap-col-title {
-      font-size: 22px; font-weight: 700; color: var(--cream);
-      margin-top: 16px; margin-bottom: 8px; letter-spacing: -0.4px;
+    .rm-col-next .rm-col-eyebrow { color: rgba(245,240,235,0.8); }
+    .rm-col-title {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.4px;
+      color: var(--cream); margin-bottom: 8px; line-height: 1.2;
     }
-    .roadmap-col-sub {
-      font-size: 14px; color: rgba(245,240,235,0.55);
-      margin-bottom: 28px; line-height: 1.55;
+    .rm-col-sub {
+      font-size: 13.5px; color: rgba(245,240,235,0.55); line-height: 1.55;
     }
-    .roadmap-items {
-      list-style: none; display: flex; flex-direction: column; gap: 12px;
+
+    /* Live column: dense compact tiles, grid */
+    .rm-tiles {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
     }
-    .roadmap-item {
-      padding: 16px 18px;
+    .rm-tile {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px;
       background: rgba(245,240,235,0.04);
       border: 1px solid rgba(245,240,235,0.08);
-      border-radius: 14px;
+      border-radius: 12px;
+      font-size: 13.5px; color: var(--cream); font-weight: 500;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .rm-tile:hover {
+      background: rgba(245,240,235,0.07);
+      border-color: rgba(245,240,235,0.15);
+      transform: translateY(-1px);
+    }
+    .rm-tile i {
+      width: 14px; height: 14px; color: rgba(245,240,235,0.55); flex-shrink: 0;
+    }
+    .rm-tile-feature {
+      background: rgba(16,185,129,0.1);
+      border-color: rgba(16,185,129,0.3);
+      grid-column: 1 / -1;
+    }
+    .rm-tile-feature i { color: #10b981; }
+    .rm-tile-feature span { color: var(--cream); font-weight: 700; }
+
+    /* Next column: expanded edge feature cards */
+    .rm-edges {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .rm-edge {
       display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px;
+      background: rgba(245,240,235,0.035);
+      border: 1px solid rgba(245,240,235,0.08);
+      border-radius: 14px;
       transition: background 0.2s, border-color 0.2s;
     }
-    .roadmap-item:hover {
-      background: rgba(245,240,235,0.07);
+    .rm-edge:hover {
+      background: rgba(245,240,235,0.06);
       border-color: rgba(245,240,235,0.18);
     }
-    .roadmap-item .ri-icon {
-      flex-shrink: 0; width: 32px; height: 32px;
+    .rm-edge-icon {
+      flex-shrink: 0; width: 36px; height: 36px;
       border-radius: 10px;
-      background: rgba(245,240,235,0.06);
+      background: rgba(245,240,235,0.08);
       display: flex; align-items: center; justify-content: center;
     }
-    .roadmap-col.now .roadmap-item .ri-icon {
-      background: rgba(16,185,129,0.12);
+    .rm-edge-icon i { width: 16px; height: 16px; color: rgba(245,240,235,0.85); }
+    .rm-edge-body { flex: 1; min-width: 0; }
+    .rm-edge-title {
+      font-size: 14.5px; font-weight: 600; color: var(--cream);
+      margin-bottom: 4px; letter-spacing: -0.2px;
     }
-    .roadmap-item .ri-icon i {
-      width: 15px; height: 15px;
-      color: rgba(245,240,235,0.85);
+    .rm-edge-desc {
+      font-size: 12.5px; color: rgba(245,240,235,0.55); line-height: 1.5;
     }
-    .roadmap-col.now .roadmap-item .ri-icon i { color: #10b981; }
-    .roadmap-item .ri-body { flex: 1; min-width: 0; }
-    .roadmap-item .ri-title {
-      font-size: 15px; font-weight: 600;
-      color: var(--cream); margin-bottom: 4px;
-      letter-spacing: -0.2px;
-    }
-    .roadmap-item .ri-desc {
-      font-size: 13px; color: rgba(245,240,235,0.55);
-      line-height: 1.5;
-    }
-    .roadmap-foot {
-      margin-top: 48px; text-align: center;
+
+    .rm-foot {
+      margin-top: 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
       padding: 24px 32px;
       background: rgba(245,240,235,0.03);
       border: 1px solid rgba(245,240,235,0.08);
       border-radius: 16px;
       font-size: 14px; color: rgba(245,240,235,0.65);
     }
-    .roadmap-foot a {
-      color: var(--cream); text-decoration: underline;
-      text-underline-offset: 3px;
+    .rm-foot a {
+      color: var(--cream); text-decoration: none;
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px;
+      background: rgba(245,240,235,0.08);
+      border: 1px solid rgba(245,240,235,0.15);
+      border-radius: 100px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
-
-    /* ─── Pricing ─────────────────────────────────────── */
-    .pricing-cards { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .pricing-card {
-      background: var(--white); border: 2px solid var(--border);
-      border-radius: 20px; padding: 32px; display: flex; flex-direction: column;
-      position: relative; transition: transform 0.25s, box-shadow 0.25s;
+    .rm-foot a:hover {
+      background: rgba(245,240,235,0.12);
+      border-color: rgba(245,240,235,0.25);
+      transform: translateY(-1px);
     }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.06); }
-    .pricing-card.featured {
-      background: var(--ink); color: var(--cream); border-color: var(--ink);
-    }
-    .pricing-card.featured::before {
-      content: "MOST POPULAR"; position: absolute; top: -12px; left: 32px;
-      padding: 4px 12px; background: #10b981; color: white;
-      font-family: 'DM Mono', monospace; font-size: 10px;
-      letter-spacing: 2px; border-radius: 100px;
-    }
-    .pricing-badge {
-      font-family: 'DM Mono', monospace; font-size: 11px;
-      text-transform: uppercase; letter-spacing: 2px;
-      color: var(--ink-muted); margin-bottom: 16px;
-    }
-    .pricing-card.featured .pricing-badge { color: rgba(245,240,235,0.5); }
-    .pricing-price { font-size: 38px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
-    .pricing-period { font-size: 13px; color: var(--ink-muted); margin-bottom: 24px; }
-    .pricing-card.featured .pricing-period { color: rgba(245,240,235,0.5); }
-    .pricing-list {
-      list-style: none; display: flex; flex-direction: column;
-      gap: 10px; margin-bottom: 28px; flex: 1;
-    }
-    .pricing-list li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 14px; color: var(--ink-light); line-height: 1.5;
-    }
-    .pricing-card.featured .pricing-list li { color: rgba(245,240,235,0.75); }
-    .pricing-list li i { flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
-    .pricing-btn {
-      display: block; text-align: center; padding: 14px; border-radius: 100px;
-      font-weight: 600; font-size: 14px; text-decoration: none;
-      border: 2px solid var(--border); color: var(--ink);
-      background: transparent; cursor: pointer; font-family: inherit; transition: all 0.2s;
-    }
-    .pricing-btn:hover { border-color: var(--ink); }
-    .pricing-card.featured .pricing-btn { background: var(--cream); color: var(--ink); border-color: var(--cream); }
-    .pricing-card.featured .pricing-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-    .pricing-guarantee {
-      margin-top: 32px; text-align: center; display: flex;
-      align-items: center; justify-content: center; gap: 8px;
-      font-size: 14px; color: var(--ink-light); font-weight: 500;
-    }
-    .pricing-guarantee i { flex-shrink: 0; color: var(--ink); }
 
     /* ─── FAQ ─────────────────────────────────────────── */
     .faq-list { margin-top: 48px; max-width: 760px; }
@@ -831,6 +837,7 @@
     /* ─── Responsive ──────────────────────────────────── */
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+      .bf-shell { grid-template-columns: 1fr; gap: 32px; padding: 36px; }
       .hero-visual { max-width: 560px; margin: 0 auto; }
       .connectors-row { gap: 20px; }
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
@@ -846,6 +853,9 @@
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .built-for-compact { padding: 56px 20px; }
+      .bf-shell { padding: 28px; }
+      .bf-chip { padding: 10px 14px; font-size: 13px; }
       .mobile-menu-btn { display: flex; }
       .hero { padding: 32px 20px 24px; }
       .hero-text h1 { font-size: 36px; letter-spacing: -1.2px; line-height: 1.05; }
@@ -1213,41 +1223,21 @@
     </div>
   </section>
 
-  <!-- Built for -->
-  <section class="section" id="built-for">
-    <div class="section-label"><span class="bar"></span> Built for</div>
-    <h2 class="section-title">For organisations that need to move with intelligence.</h2>
-    <p class="section-subtitle">MoonDesk is built for modern organisations across sectors, anywhere accountability is required and speed of decision matters.</p>
-    <div class="built-grid">
-      <div class="built-card">
-        <div class="built-icon"><i data-lucide="briefcase"></i></div>
-        <h4>Modern teams &amp; startups</h4>
-        <p>Operating teams running fast, with too many tools and not enough memory across them.</p>
+  <!-- Built for (compact strip) -->
+  <section class="section built-for-compact" id="built-for">
+    <div class="bf-shell">
+      <div class="bf-left">
+        <div class="section-label"><span class="bar"></span> Built for</div>
+        <h2 class="bf-title">For organisations that need to move with intelligence.</h2>
+        <p class="bf-sub">Across sectors, anywhere accountability is required and speed of decision matters.</p>
       </div>
-      <div class="built-card">
-        <div class="built-icon"><i data-lucide="heart-handshake"></i></div>
-        <h4>Foundations &amp; non-profits</h4>
-        <p>Mission-driven organisations who need to prove the work, the impact, and the evidence.</p>
-      </div>
-      <div class="built-card">
-        <div class="built-icon"><i data-lucide="settings"></i></div>
-        <h4>Operations teams</h4>
-        <p>Inside larger orgs, where coordination, follow-through, and accountability across functions is the daily job.</p>
-      </div>
-      <div class="built-card">
-        <div class="built-icon"><i data-lucide="users"></i></div>
-        <h4>Consultancies &amp; agencies</h4>
-        <p>Client-facing teams who need to remember every conversation, every commitment, and every deliverable.</p>
-      </div>
-      <div class="built-card">
-        <div class="built-icon"><i data-lucide="microscope"></i></div>
-        <h4>Research &amp; academic teams</h4>
-        <p>Cross-functional research groups that handle large knowledge bases, evidence, and stakeholder relationships.</p>
-      </div>
-      <div class="built-card">
-        <div class="built-icon"><i data-lucide="landmark"></i></div>
-        <h4>Government &amp; public sector</h4>
-        <p>Teams that operate under scrutiny, where audit trails, evidence, and traceable decisions are non-negotiable.</p>
+      <div class="bf-right">
+        <span class="bf-chip"><i data-lucide="briefcase"></i> Modern teams &amp; startups</span>
+        <span class="bf-chip"><i data-lucide="heart-handshake"></i> Foundations &amp; non-profits</span>
+        <span class="bf-chip"><i data-lucide="settings"></i> Operations teams</span>
+        <span class="bf-chip"><i data-lucide="users"></i> Consultancies &amp; agencies</span>
+        <span class="bf-chip"><i data-lucide="microscope"></i> Research &amp; academic</span>
+        <span class="bf-chip"><i data-lucide="landmark"></i> Government &amp; public sector</span>
       </div>
     </div>
   </section>
@@ -1328,254 +1318,117 @@
     </div>
   </section>
 
-  <!-- ROADMAP (2 columns, your copy) -->
+  <!-- ROADMAP (compact, creative) -->
   <section class="section-full ink" id="roadmap" style="border-top:1px solid rgba(245,240,235,0.08)">
     <div class="section-full-inner">
-      <div class="roadmap-header">
-        <div>
+
+      <div class="rm-header">
+        <div class="rm-header-left">
           <div class="section-label"><span class="bar"></span> Roadmap</div>
           <h2 class="section-title">Where MoonDesk is going.</h2>
           <p class="section-subtitle">MoonDesk is evolving from an operations workspace into the intelligence layer for modern organisations. One place to manage work, search knowledge, prove accountability, and turn organisational context into action.</p>
         </div>
-        <div class="roadmap-meta">Updated · May 2026</div>
+        <div class="rm-meta">
+          <div class="rm-meta-pill"><span class="dot live"></span> 13 Live</div>
+          <div class="rm-meta-pill"><span class="dot next"></span> 6 Shipping next</div>
+          <div class="rm-meta-date">Updated · May 2026</div>
+        </div>
       </div>
 
-      <div class="roadmap-columns">
+      <div class="rm-grid">
 
-        <!-- LIVE NOW -->
-        <div class="roadmap-col now">
-          <div class="roadmap-col-header">
-            <span class="roadmap-col-pulse"></span>
-            <h3>Live now</h3>
+        <!-- LIVE NOW (left column, taller) -->
+        <div class="rm-col rm-col-live">
+          <div class="rm-col-header">
+            <div class="rm-col-head-row">
+              <span class="rm-pulse live"></span>
+              <span class="rm-col-eyebrow">Live now</span>
+            </div>
+            <h3 class="rm-col-title">Core operating system for modern organisations.</h3>
+            <p class="rm-col-sub">One place to manage work, relationships, communication, evidence, knowledge, and accountability.</p>
           </div>
-          <div class="roadmap-col-title">Core operating system for modern organisations.</div>
-          <p class="roadmap-col-sub">MoonDesk gives teams one place to manage work, relationships, communication, evidence, knowledge, and accountability.</p>
-          <ul class="roadmap-items">
 
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="folder-kanban"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Work management</div>
-                <div class="ri-desc">Run programmes, projects, tasks, dependencies, approvals, deadlines, and evidence-required completion from one workspace.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="users"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Stakeholder intelligence</div>
-                <div class="ri-desc">Track funders, partners, clients, contacts, opportunities, interaction history, and relationship context in one organisational memory.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="message-square"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Shared communication layer</div>
-                <div class="ri-desc">Bring team messaging, threaded discussions, shared inboxes, Gmail-connected workflows, and AI-assisted triage into the flow of work.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="brain"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">MoonDesk Brain</div>
-                <div class="ri-desc">Connect emails, files, tasks, stakeholders, work, decisions, and evidence into one queryable source of truth.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="search"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Organisational search</div>
-                <div class="ri-desc">Ask questions across your work and get cited answers from connected knowledge sources, not guesses.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="plug-zap"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Google Workspace intelligence</div>
-                <div class="ri-desc">Connect Gmail, Drive, and Calendar so MoonDesk can understand the real knowledge layer behind your organisation.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="file-text"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Deep file indexing</div>
-                <div class="ri-desc">Search across Docs, Sheets, PDFs, attachments, reports, proposals, and evidence files, with answers linked back to source documents.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="zap"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Natural language actions</div>
-                <div class="ri-desc">Ask MoonDesk to draft emails, create tasks, summarise work, prepare updates, route follow-ups, and suggest next actions from your organisation's context.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="file-bar-chart"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Leadership digests</div>
-                <div class="ri-desc">Generate weekly summaries of progress, blockers, overdue work, evidence gaps, stakeholder activity, and follow-ups requiring attention.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="banknote"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Financial and payment context</div>
-                <div class="ri-desc">Connect Paystack and Flutterwave so financial activity can become part of your organisation's operating memory.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="message-circle"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">WhatsApp Business layer</div>
-                <div class="ri-desc">Bring official WhatsApp conversations into MoonDesk so customer, partner, and team communication does not disappear inside individual phones.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="radio"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Opportunity intelligence</div>
-                <div class="ri-desc">Scan relevant funding, partnership, and growth opportunities and match them to your organisation's focus areas.</div>
-              </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="shield-check"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Security and accountability</div>
-                <div class="ri-desc">Operate with multi-tenant security, row-level access, role-based permissions, audit logs, and organisation-level data separation.</div>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-        <!-- SHIPPING NEXT -->
-        <div class="roadmap-col next">
-          <div class="roadmap-col-header">
-            <span class="roadmap-col-pulse"></span>
-            <h3>Shipping next</h3>
+          <div class="rm-tiles">
+            <div class="rm-tile"><i data-lucide="folder-kanban"></i><span>Work management</span></div>
+            <div class="rm-tile"><i data-lucide="users"></i><span>Stakeholder intelligence</span></div>
+            <div class="rm-tile"><i data-lucide="message-square"></i><span>Shared communication</span></div>
+            <div class="rm-tile rm-tile-feature"><i data-lucide="brain"></i><span>MoonDesk Brain</span></div>
+            <div class="rm-tile"><i data-lucide="search"></i><span>Organisational search</span></div>
+            <div class="rm-tile"><i data-lucide="plug-zap"></i><span>Google Workspace</span></div>
+            <div class="rm-tile"><i data-lucide="file-text"></i><span>Deep file indexing</span></div>
+            <div class="rm-tile"><i data-lucide="zap"></i><span>Natural language actions</span></div>
+            <div class="rm-tile"><i data-lucide="file-bar-chart"></i><span>Leadership digests</span></div>
+            <div class="rm-tile"><i data-lucide="banknote"></i><span>Financial context</span></div>
+            <div class="rm-tile"><i data-lucide="message-circle"></i><span>WhatsApp Business</span></div>
+            <div class="rm-tile"><i data-lucide="radio"></i><span>Opportunity intel</span></div>
+            <div class="rm-tile"><i data-lucide="shield-check"></i><span>Security &amp; audit</span></div>
           </div>
-          <div class="roadmap-col-title">The edge of the operating system.</div>
-          <p class="roadmap-col-sub">These capabilities make MoonDesk more than a tool. They turn it into the intelligence infrastructure behind the organisation.</p>
-          <ul class="roadmap-items">
+        </div>
 
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="mic"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Voice queries</div>
-                <div class="ri-desc">Ask questions by voice across desktop and mobile, so teams can retrieve organisational knowledge without digging through tools.</div>
+        <!-- SHIPPING NEXT (right column, edge features expanded) -->
+        <div class="rm-col rm-col-next">
+          <div class="rm-col-header">
+            <div class="rm-col-head-row">
+              <span class="rm-pulse next"></span>
+              <span class="rm-col-eyebrow">Shipping next</span>
+            </div>
+            <h3 class="rm-col-title">The edge of the operating system.</h3>
+            <p class="rm-col-sub">These capabilities turn MoonDesk into intelligence infrastructure behind the organisation.</p>
+          </div>
+
+          <div class="rm-edges">
+            <div class="rm-edge">
+              <div class="rm-edge-icon"><i data-lucide="mic"></i></div>
+              <div class="rm-edge-body">
+                <div class="rm-edge-title">Voice queries</div>
+                <div class="rm-edge-desc">Ask by voice on desktop and mobile. Retrieve organisational knowledge without digging through tools.</div>
               </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="network"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Knowledge graph</div>
-                <div class="ri-desc">Automatically connect people, organisations, work, deals, tasks, documents, commitments, risks, and decisions into a living institutional memory.</div>
+            </div>
+            <div class="rm-edge">
+              <div class="rm-edge-icon"><i data-lucide="network"></i></div>
+              <div class="rm-edge-body">
+                <div class="rm-edge-title">Knowledge graph</div>
+                <div class="rm-edge-desc">Automatically connect people, organisations, work, deals, documents, commitments, risks, and decisions into living institutional memory.</div>
               </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="activity"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Closed-loop monitoring</div>
-                <div class="ri-desc">Watch for stale deals, overdue commitments, missing evidence, follow-up gaps, cash-flow signals, operational risks, and blockers before they become problems.</div>
+            </div>
+            <div class="rm-edge">
+              <div class="rm-edge-icon"><i data-lucide="activity"></i></div>
+              <div class="rm-edge-body">
+                <div class="rm-edge-title">Closed-loop monitoring</div>
+                <div class="rm-edge-desc">Watch for stale deals, missed follow-ups, cash-flow signals, and operational risks before they become problems.</div>
               </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="building"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Multi-workspace intelligence</div>
-                <div class="ri-desc">Query across branches, departments, regions, partner organisations, or client workspaces while preserving permissions and local control.</div>
+            </div>
+            <div class="rm-edge">
+              <div class="rm-edge-icon"><i data-lucide="building"></i></div>
+              <div class="rm-edge-body">
+                <div class="rm-edge-title">Multi-workspace intelligence</div>
+                <div class="rm-edge-desc">Query across branches, departments, regions, or partner organisations while preserving permissions and local control.</div>
               </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="terminal"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">API and agent layer</div>
-                <div class="ri-desc">Build custom workflows, internal tools, and specialised AI agents on top of your organisation's trusted MoonDesk brain.</div>
+            </div>
+            <div class="rm-edge">
+              <div class="rm-edge-icon"><i data-lucide="terminal"></i></div>
+              <div class="rm-edge-body">
+                <div class="rm-edge-title">API and agent layer</div>
+                <div class="rm-edge-desc">Build custom workflows, internal tools, and specialised AI agents on top of your organisation's trusted MoonDesk brain.</div>
               </div>
-            </li>
-
-            <li class="roadmap-item">
-              <div class="ri-icon"><i data-lucide="bot"></i></div>
-              <div class="ri-body">
-                <div class="ri-title">Agentic operations</div>
-                <div class="ri-desc">Deploy scoped AI agents for operations, M&amp;E, client relations, finance, and leadership reporting, with human approval built in.</div>
+            </div>
+            <div class="rm-edge">
+              <div class="rm-edge-icon"><i data-lucide="bot"></i></div>
+              <div class="rm-edge-body">
+                <div class="rm-edge-title">Agentic operations</div>
+                <div class="rm-edge-desc">Deploy scoped AI agents for operations, M&amp;E, client relations, finance, and leadership reporting. Human approval built in.</div>
               </div>
-            </li>
-
-          </ul>
+            </div>
+          </div>
         </div>
 
       </div>
 
-      <div class="roadmap-foot">
-        Want something specific? <a href="mailto:impact@tekforall.org">Tell us what to build next.</a>
+      <div class="rm-foot">
+        <span>Want something specific?</span>
+        <a href="mailto:impact@tekforall.org">Tell us what to build next <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
-    </div>
-  </section>
 
-  <!-- Pricing -->
-  <section class="section-full white" id="pricing">
-    <div class="section-full-inner">
-      <div class="section-label"><span class="bar"></span> Pricing</div>
-      <h2 class="section-title">Simple pricing. All features included.</h2>
-      <p class="section-subtitle">One product. Three tiers based on team size. No hidden seats, no feature gating, no surprises.</p>
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <div class="pricing-badge">Small team</div>
-          <div class="pricing-price">&#8358;49,999</div>
-          <div class="pricing-period">/ month · up to 5 users</div>
-          <ul class="pricing-list">
-            <li><i data-lucide="check"></i> Full MoonDesk access</li>
-            <li><i data-lucide="check"></i> Brain Bar and Luna</li>
-            <li><i data-lucide="check"></i> Shared inbox plus Drive integration</li>
-            <li><i data-lucide="check"></i> CRM plus opportunity radar</li>
-            <li><i data-lucide="check"></i> Email support</li>
-          </ul>
-          <button class="pricing-btn" onclick="openModal()">Book a demo</button>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Team</div>
-          <div class="pricing-price">&#8358;149,999</div>
-          <div class="pricing-period">/ month · up to 20 users</div>
-          <ul class="pricing-list">
-            <li><i data-lucide="check"></i> Everything in Small Team</li>
-            <li><i data-lucide="check"></i> Team visibility and reporting</li>
-            <li><i data-lucide="check"></i> Manager approval workflows</li>
-            <li><i data-lucide="check"></i> Advanced analytics</li>
-            <li><i data-lucide="check"></i> Priority support</li>
-          </ul>
-          <button class="pricing-btn" onclick="openModal()">Book a demo</button>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-badge">Custom</div>
-          <div class="pricing-price">&#8358;199,999</div>
-          <div class="pricing-period">/ month + per-user · 21+ users</div>
-          <ul class="pricing-list">
-            <li><i data-lucide="check"></i> Everything in Team</li>
-            <li><i data-lucide="check"></i> Dedicated onboarding</li>
-            <li><i data-lucide="check"></i> Monthly success reviews</li>
-            <li><i data-lucide="check"></i> Audit and governance exports</li>
-            <li><i data-lucide="check"></i> SLA and dedicated CS contact</li>
-          </ul>
-          <button class="pricing-btn" onclick="openModal()">Contact us</button>
-        </div>
-      </div>
-      <p class="pricing-guarantee"><i data-lucide="shield-check" style="width:16px;height:16px"></i> 7-day money-back guarantee for first-time customers.</p>
     </div>
   </section>
 
@@ -1710,7 +1563,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.problem-card, .built-card, .pillar, .roadmap-item, .security-mini, .pricing-card').forEach(function(el) {
+    document.querySelectorAll('.problem-card, .bf-chip, .pillar, .rm-tile, .rm-edge, .security-mini').forEach(function(el) {
       el.style.opacity = '0';
       el.style.animation = 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards';
       el.style.animationPlayState = 'paused';
