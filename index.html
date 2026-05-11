@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoonDesk — AI-Powered Programme Management</title>
-  <meta name="description" content="MoonDesk is an AI-powered programme management platform built for NGOs, programme teams, and mission-driven organisations." />
+  <title>MoonDesk — The intelligence layer for modern organisations</title>
+  <meta name="description" content="MoonDesk is an AI brain that turns scattered knowledge into answers, actions, and accountability. Built for NGOs, foundations, and mission-driven teams." />
+  <meta property="og:title" content="MoonDesk — The intelligence layer for modern organisations" />
+  <meta property="og:description" content="An AI brain that turns scattered knowledge into answers, actions, and accountability." />
+  <meta property="og:url" content="https://moondesk.app" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%231a1a1a'/><path d='M14 10a6 6 0 0 0 9 9 8 8 0 1 1-9-9z' fill='none' stroke='%23f5f0eb' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,6 +24,7 @@
       --ink-muted: #888;
       --border: #d4cfc8;
       --white: #fff;
+      --accent: #1a1a1a;
     }
 
     html { scroll-behavior: smooth; }
@@ -42,7 +46,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px;
+      max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 72px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
@@ -58,7 +62,7 @@
     .logo-icon.sm { width: 32px; height: 32px; }
     .logo-icon.sm i, .logo-icon.sm svg { width: 16px; height: 16px; }
     .nav-logo span { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
     .nav-links a {
       text-decoration: none; color: var(--ink-light);
       font-size: 14px; font-weight: 500; transition: color 0.2s;
@@ -69,6 +73,7 @@
       padding: 10px 24px; border-radius: 100px; font-weight: 600 !important;
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer; border: none; font-size: 14px; font-family: inherit;
+      text-decoration: none; display: inline-block;
     }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
     .mobile-menu-btn {
@@ -78,133 +83,441 @@
 
     /* ─── Hero ────────────────────────────────────────── */
     .hero {
-      max-width: 1200px; margin: 0 auto; padding: 48px 24px 40px;
-      display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center;
+      max-width: 1280px; margin: 0 auto; padding: 64px 24px 48px;
+      display: grid; grid-template-columns: 1.05fr 1.1fr; gap: 48px;
+      align-items: center; position: relative;
     }
-    .hero-text h2 {
-      font-size: clamp(36px, 4.5vw, 52px); font-weight: 800;
-      line-height: 1.05; letter-spacing: -1.5px; color: var(--ink);
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border: 1px solid var(--border);
+      border-radius: 100px; background: var(--white);
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--ink-muted); margin-bottom: 24px;
     }
-    .hero-text h4 {
-      font-size: 18px; font-weight: 500; letter-spacing: 0;
-      margin-top: 10px; color: var(--ink-light); line-height: 1.4;
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+      animation: pulse 2s ease-in-out infinite;
     }
-    .hero-text p {
-      margin-top: 16px; font-size: 17px; line-height: 1.7;
-      color: var(--ink-light); max-width: 480px;
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.2); }
+      50% { box-shadow: 0 0 0 6px rgba(16,185,129,0.1); }
     }
-    .hero-features { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
-    .hero-feature {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 15px; color: var(--ink); font-weight: 500;
+    .hero-text h1 {
+      font-size: clamp(38px, 5.5vw, 64px); font-weight: 800;
+      line-height: 1.02; letter-spacing: -2px; color: var(--ink);
     }
-    .hero-feature .dot {
-      width: 8px; height: 8px; background: var(--ink);
-      border-radius: 50%; flex-shrink: 0;
+    .hero-text h1 .accent {
+      background: linear-gradient(135deg, #1a1a1a 0%, #555 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .hero-ctas { margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-text .sub {
+      margin-top: 20px; font-size: 18px; line-height: 1.65;
+      color: var(--ink-light); max-width: 540px;
+    }
+    .hero-triad {
+      margin-top: 28px; display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .triad-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+    }
+    .triad-chip i { width: 14px; height: 14px; }
+    .hero-ctas { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--ink); color: var(--cream); padding: 14px 32px;
+      background: var(--ink); color: var(--cream); padding: 14px 28px;
       border-radius: 100px; font-weight: 600; font-size: 15px;
       text-decoration: none; border: 2px solid var(--ink);
-      cursor: pointer; font-family: inherit;
+      cursor: pointer; font-family: inherit; display: inline-flex;
+      align-items: center; gap: 8px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
     .btn-secondary {
-      background: transparent; color: var(--ink); padding: 14px 32px;
+      background: transparent; color: var(--ink); padding: 14px 28px;
       border-radius: 100px; font-weight: 600; font-size: 15px;
       text-decoration: none; border: 2px solid var(--border);
       cursor: pointer; font-family: inherit; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-secondary:hover { border-color: var(--ink); }
+    .btn-secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
     .hero-visual { position: relative; display: flex; justify-content: center; align-items: flex-start; }
     .hero-desktop {
-      width: 100%; max-width: 600px; border-radius: 16px;
+      width: 100%; max-width: 620px; border-radius: 16px;
       border: 2px solid var(--border);
       box-shadow: 0 24px 80px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
       background: var(--white);
     }
     .hero-mobile {
-      position: absolute; bottom: -30px; right: -20px; width: 140px;
+      position: absolute; bottom: -24px; right: -16px; width: 130px;
       border-radius: 20px; border: 2px solid var(--border);
       box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
       background: var(--white);
     }
 
+    /* ─── Trust strip ─────────────────────────────────── */
+    .trust {
+      max-width: 1280px; margin: 24px auto 0; padding: 0 24px;
+    }
+    .trust-inner {
+      padding: 20px 32px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .trust-label {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--ink-muted);
+    }
+    .trust-items {
+      display: flex; gap: 32px; flex-wrap: wrap; align-items: center;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--ink);
+    }
+    .trust-item i { color: var(--ink-muted); width: 16px; height: 16px; }
+
     /* ─── Section base ────────────────────────────────── */
-    .section { max-width: 1200px; margin: 0 auto; padding: 100px 24px; }
+    .section { max-width: 1280px; margin: 0 auto; padding: 100px 24px; }
+    .section-full {
+      width: 100%; padding: 100px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .section-full.white { background: var(--white); }
+    .section-full.ink { background: var(--ink); color: var(--cream); }
+    .section-full-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .section-label {
       font-family: 'DM Mono', monospace; font-size: 11px;
       text-transform: uppercase; letter-spacing: 3px;
       color: var(--ink-muted); margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 8px;
     }
+    .section-label .bar {
+      width: 24px; height: 1px; background: var(--ink-muted);
+    }
+    .section-full.ink .section-label { color: rgba(245,240,235,0.5); }
+    .section-full.ink .section-label .bar { background: rgba(245,240,235,0.4); }
     .section-title {
-      font-size: clamp(28px, 4vw, 44px); font-weight: 800;
-      letter-spacing: -1px; line-height: 1.15; max-width: 600px;
+      font-size: clamp(32px, 4.5vw, 52px); font-weight: 800;
+      letter-spacing: -1.5px; line-height: 1.1; max-width: 760px;
+      color: var(--ink);
     }
+    .section-full.ink .section-title { color: var(--cream); }
     .section-subtitle {
-      margin-top: 16px; font-size: 17px; color: var(--ink-light);
-      max-width: 560px; line-height: 1.7;
+      margin-top: 20px; font-size: 18px; color: var(--ink-light);
+      max-width: 640px; line-height: 1.65;
     }
+    .section-full.ink .section-subtitle { color: rgba(245,240,235,0.65); }
 
-    /* ─── Features ────────────────────────────────────── */
-    .features-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .feature-card {
-      background: var(--white); border: 2px solid var(--border);
-      border-radius: 20px; padding: 32px;
+    /* ─── Problem section ─────────────────────────────── */
+    .problem-grid {
+      margin-top: 56px; display: grid;
+      grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .problem-card {
+      padding: 32px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 20px;
       transition: transform 0.25s, box-shadow 0.25s;
     }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      border: 2px solid var(--border); display: flex;
-      align-items: center; justify-content: center;
-      margin-bottom: 20px; color: var(--ink);
+    .problem-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+    .problem-number {
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      color: var(--ink-muted); margin-bottom: 16px; letter-spacing: 2px;
     }
-    .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { font-size: 14px; color: var(--ink-light); line-height: 1.65; }
+    .problem-card h3 {
+      font-size: 20px; font-weight: 700; margin-bottom: 10px;
+      letter-spacing: -0.4px; line-height: 1.3;
+    }
+    .problem-card p {
+      font-size: 14px; color: var(--ink-light); line-height: 1.65;
+    }
 
-    /* ─── How It Works ────────────────────────────────── */
-    .steps { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-    .step { text-align: center; }
-    .step-num {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--ink); color: var(--cream);
-      display: inline-flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 22px; margin-bottom: 20px;
+    /* ─── Three pillars (Answers / Actions / Accountability) ─── */
+    .pillars-wrap { margin-top: 64px; display: flex; flex-direction: column; gap: 100px; }
+    .pillar {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
     }
-    .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 14px; color: var(--ink-light); line-height: 1.6; }
+    .pillar.reverse { direction: rtl; }
+    .pillar.reverse > * { direction: ltr; }
+    .pillar-content { max-width: 480px; }
+    .pillar-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 14px; background: var(--ink);
+      border-radius: 100px; color: var(--cream);
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .pillar-tag .num { opacity: 0.5; }
+    .pillar-content h3 {
+      font-size: clamp(28px, 3.5vw, 40px); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px;
+    }
+    .pillar-content > p {
+      font-size: 17px; color: var(--ink-light); line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .pillar-bullets {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+    }
+    .pillar-bullets li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 15px; color: var(--ink); line-height: 1.55;
+    }
+    .pillar-bullets li i {
+      flex-shrink: 0; width: 18px; height: 18px;
+      margin-top: 2px; color: var(--ink);
+    }
+    .pillar-demo {
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: 20px; padding: 28px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+    }
+    .demo-window {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .demo-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+      background: var(--cream-dark);
+    }
+    .demo-bar-dot {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--border);
+    }
+    .demo-bar-title {
+      flex: 1; text-align: center; font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--ink-muted); letter-spacing: 1px;
+    }
+    .demo-body { padding: 20px; }
+    .demo-query {
+      padding: 12px 16px; background: var(--white);
+      border: 1.5px solid var(--border); border-radius: 12px;
+      font-size: 14px; color: var(--ink);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .demo-query i { color: var(--ink-muted); width: 16px; height: 16px; }
+    .demo-answer {
+      margin-top: 16px; padding: 16px; background: var(--ink);
+      border-radius: 12px; color: var(--cream);
+      font-size: 14px; line-height: 1.6;
+    }
+    .demo-answer .cite {
+      display: inline-flex; align-items: center;
+      padding: 2px 8px; margin: 0 2px; border-radius: 100px;
+      background: rgba(245,240,235,0.15); border: 1px solid rgba(245,240,235,0.2);
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: var(--cream); text-decoration: none;
+    }
+    .demo-actions {
+      margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .demo-action-btn {
+      padding: 8px 14px; background: var(--white);
+      border: 1.5px solid var(--border); border-radius: 100px;
+      font-size: 13px; font-weight: 600; color: var(--ink);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .demo-action-btn i { width: 13px; height: 13px; }
+    .demo-action-btn.primary { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+    .demo-task {
+      padding: 14px 16px; background: var(--white);
+      border: 1.5px solid var(--border); border-radius: 12px;
+      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .demo-task:last-child { margin-bottom: 0; }
+    .demo-task .check {
+      width: 18px; height: 18px; border: 2px solid var(--border);
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .demo-task .check.done {
+      background: var(--ink); border-color: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .demo-task .check.done i { width: 11px; height: 11px; color: var(--cream); }
+    .demo-task-text { flex: 1; font-size: 14px; }
+    .demo-task-text .label { color: var(--ink); font-weight: 500; }
+    .demo-task-text .meta { color: var(--ink-muted); font-size: 12px; margin-top: 2px; }
+    .demo-evidence-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; background: var(--cream); border-radius: 100px;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light);
+      text-decoration: none;
+    }
+
+    /* ─── Built for section ───────────────────────────── */
+    .built-grid {
+      margin-top: 56px; display: grid;
+      grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .built-card {
+      padding: 28px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 18px;
+      transition: transform 0.25s;
+    }
+    .built-card:hover { transform: translateY(-3px); }
+    .built-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--cream); display: flex;
+      align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .built-icon i { color: var(--ink); width: 22px; height: 22px; }
+    .built-card h4 {
+      font-size: 17px; font-weight: 700; margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+    .built-card p {
+      font-size: 13px; color: var(--ink-light); line-height: 1.6;
+    }
+
+    /* ─── Roadmap ─────────────────────────────────────── */
+    .roadmap-header {
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 32px; margin-bottom: 56px; flex-wrap: wrap;
+    }
+    .roadmap-meta {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: rgba(245,240,235,0.5); letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .roadmap-columns {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .roadmap-col {
+      padding: 32px;
+      border: 1px solid rgba(245,240,235,0.12);
+      border-radius: 24px;
+      background: rgba(245,240,235,0.025);
+      backdrop-filter: blur(20px);
+      position: relative; overflow: hidden;
+    }
+    .roadmap-col.now { border-color: rgba(16,185,129,0.3); }
+    .roadmap-col.now::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #10b981, transparent);
+    }
+    .roadmap-col.next { border-color: rgba(245,240,235,0.18); }
+    .roadmap-col.horizon { border-color: rgba(245,240,235,0.1); }
+    .roadmap-col-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    }
+    .roadmap-col-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .roadmap-col.now .roadmap-col-pulse {
+      background: #10b981;
+      box-shadow: 0 0 0 4px rgba(16,185,129,0.2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .roadmap-col.next .roadmap-col-pulse { background: rgba(245,240,235,0.5); }
+    .roadmap-col.horizon .roadmap-col-pulse { background: rgba(245,240,235,0.25); }
+    .roadmap-col h3 {
+      font-size: 13px; font-family: 'DM Mono', monospace;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--cream);
+    }
+    .roadmap-col.next h3 { color: rgba(245,240,235,0.8); }
+    .roadmap-col.horizon h3 { color: rgba(245,240,235,0.55); }
+    .roadmap-col-sub {
+      font-size: 13px; color: rgba(245,240,235,0.5);
+      margin-bottom: 28px; line-height: 1.5;
+    }
+    .roadmap-items {
+      list-style: none; display: flex; flex-direction: column; gap: 14px;
+    }
+    .roadmap-item {
+      padding: 14px 16px;
+      background: rgba(245,240,235,0.04);
+      border: 1px solid rgba(245,240,235,0.08);
+      border-radius: 12px;
+      display: flex; gap: 12px; align-items: flex-start;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .roadmap-item:hover {
+      background: rgba(245,240,235,0.07);
+      border-color: rgba(245,240,235,0.15);
+    }
+    .roadmap-item .ri-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border-radius: 8px;
+      background: rgba(245,240,235,0.06);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .roadmap-col.now .roadmap-item .ri-icon {
+      background: rgba(16,185,129,0.15);
+    }
+    .roadmap-item .ri-icon i {
+      width: 14px; height: 14px;
+      color: rgba(245,240,235,0.8);
+    }
+    .roadmap-col.now .roadmap-item .ri-icon i { color: #10b981; }
+    .roadmap-item .ri-body { flex: 1; min-width: 0; }
+    .roadmap-item .ri-title {
+      font-size: 14px; font-weight: 600;
+      color: var(--cream); margin-bottom: 2px;
+      letter-spacing: -0.2px;
+    }
+    .roadmap-col.horizon .roadmap-item .ri-title { color: rgba(245,240,235,0.75); }
+    .roadmap-item .ri-desc {
+      font-size: 12.5px; color: rgba(245,240,235,0.5);
+      line-height: 1.45;
+    }
+    .roadmap-flag {
+      display: inline-block; padding: 2px 8px;
+      background: rgba(245,240,235,0.1); border-radius: 100px;
+      font-family: 'DM Mono', monospace; font-size: 9px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(245,240,235,0.6); margin-left: 6px;
+    }
+    .roadmap-flag.live {
+      background: rgba(16,185,129,0.15); color: #10b981;
+    }
+    .roadmap-foot {
+      margin-top: 48px; text-align: center;
+      padding: 24px 32px;
+      background: rgba(245,240,235,0.03);
+      border: 1px solid rgba(245,240,235,0.08);
+      border-radius: 16px;
+      font-size: 14px; color: rgba(245,240,235,0.65);
+    }
+    .roadmap-foot a {
+      color: var(--cream); text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
     /* ─── Luna AI ─────────────────────────────────────── */
     .luna-section {
-      background: var(--ink); color: var(--cream); border-radius: 28px;
-      padding: 72px; margin: 0 24px; max-width: 1200px;
-      margin-left: auto; margin-right: auto;
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: 28px; padding: 64px;
+      max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
     }
-    .luna-section .section-label { color: var(--ink-muted); }
-    .luna-section .section-title { color: var(--cream); }
-    .luna-section .section-subtitle { color: rgba(245,240,235,0.7); }
-    .luna-features { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .luna-features { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
     .luna-feature { display: flex; gap: 16px; align-items: flex-start; }
     .luna-feature-icon {
-      width: 40px; height: 40px; border-radius: 12px;
-      border: 1px solid rgba(245,240,235,0.15);
+      width: 42px; height: 42px; border-radius: 12px;
+      border: 2px solid var(--border); background: var(--cream);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: var(--cream);
+      flex-shrink: 0; color: var(--ink);
     }
-    .luna-feature h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-    .luna-feature p { font-size: 13px; color: rgba(245,240,235,0.6); line-height: 1.5; }
+    .luna-feature h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .luna-feature p { font-size: 14px; color: var(--ink-light); line-height: 1.55; }
     .luna-visual {
-      background: rgba(245,240,235,0.05); border: 1px solid rgba(245,240,235,0.1);
-      border-radius: 20px; padding: 40px;
-      display: flex; flex-direction: column; gap: 16px;
+      background: var(--ink); color: var(--cream);
+      border-radius: 20px; padding: 36px;
+      display: flex; flex-direction: column; gap: 14px;
     }
     .luna-bubble {
       padding: 14px 20px; border-radius: 16px;
-      font-size: 14px; line-height: 1.5; max-width: 90%;
+      font-size: 14px; line-height: 1.5; max-width: 92%;
     }
     .luna-bubble.user {
       background: rgba(245,240,235,0.1); border: 1px solid rgba(245,240,235,0.15);
@@ -218,41 +531,75 @@
       font-family: 'DM Mono', monospace; font-size: 10px;
       text-transform: uppercase; letter-spacing: 1.5px;
       color: rgba(245,240,235,0.4); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .luna-bubble .luna-tag::before {
+      content: ""; width: 5px; height: 5px; border-radius: 50%;
+      background: #10b981;
     }
 
     /* ─── Security ────────────────────────────────────── */
-    .security-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .security-card {
-      display: flex; gap: 16px; align-items: flex-start; padding: 24px;
-      background: var(--white); border: 2px solid var(--border); border-radius: 16px;
+    .security-grid {
+      margin-top: 48px; display: grid;
+      grid-template-columns: repeat(4, 1fr); gap: 16px;
     }
-    .security-card i { flex-shrink: 0; color: var(--ink); }
-    .security-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-    .security-card p { font-size: 13px; color: var(--ink-light); line-height: 1.5; }
+    .security-card {
+      padding: 24px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 16px;
+      transition: transform 0.2s;
+    }
+    .security-card:hover { transform: translateY(-2px); }
+    .security-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--ink); display: flex;
+      align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .security-icon i { color: var(--cream); width: 18px; height: 18px; }
+    .security-card h4 {
+      font-size: 15px; font-weight: 700; margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+    .security-card p {
+      font-size: 13px; color: var(--ink-light); line-height: 1.55;
+    }
 
     /* ─── Pricing ─────────────────────────────────────── */
-    .pricing-cards { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-cards { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .pricing-card {
       background: var(--white); border: 2px solid var(--border);
-      border-radius: 20px; padding: 36px; display: flex; flex-direction: column;
+      border-radius: 20px; padding: 32px; display: flex; flex-direction: column;
+      position: relative; transition: transform 0.25s, box-shadow 0.25s;
     }
-    .pricing-card.featured { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.06); }
+    .pricing-card.featured {
+      background: var(--ink); color: var(--cream); border-color: var(--ink);
+    }
+    .pricing-card.featured::before {
+      content: "MOST POPULAR"; position: absolute; top: -12px; left: 32px;
+      padding: 4px 12px; background: #10b981; color: white;
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 2px; border-radius: 100px;
+    }
     .pricing-badge {
       font-family: 'DM Mono', monospace; font-size: 11px;
       text-transform: uppercase; letter-spacing: 2px;
-      color: var(--ink-muted); margin-bottom: 12px;
+      color: var(--ink-muted); margin-bottom: 16px;
     }
     .pricing-card.featured .pricing-badge { color: rgba(245,240,235,0.5); }
-    .pricing-price { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
+    .pricing-price { font-size: 38px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
     .pricing-period { font-size: 13px; color: var(--ink-muted); margin-bottom: 24px; }
     .pricing-card.featured .pricing-period { color: rgba(245,240,235,0.5); }
     .pricing-list {
       list-style: none; display: flex; flex-direction: column;
-      gap: 10px; margin-bottom: 32px; flex: 1;
+      gap: 10px; margin-bottom: 28px; flex: 1;
     }
-    .pricing-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-light); }
+    .pricing-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--ink-light); line-height: 1.5;
+    }
     .pricing-card.featured .pricing-list li { color: rgba(245,240,235,0.75); }
-    .pricing-list li i { flex-shrink: 0; }
+    .pricing-list li i { flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
     .pricing-btn {
       display: block; text-align: center; padding: 14px; border-radius: 100px;
       font-weight: 600; font-size: 14px; text-decoration: none;
@@ -262,25 +609,6 @@
     .pricing-btn:hover { border-color: var(--ink); }
     .pricing-card.featured .pricing-btn { background: var(--cream); color: var(--ink); border-color: var(--cream); }
     .pricing-card.featured .pricing-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-    .custom-detail {
-      margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);
-    }
-    .custom-detail h5 {
-      font-family: 'DM Mono', monospace; font-size: 11px;
-      text-transform: uppercase; letter-spacing: 2px;
-      color: var(--ink-muted); margin-bottom: 12px;
-    }
-    .custom-detail ul {
-      list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;
-    }
-    .custom-detail ul li {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--ink-light);
-    }
-    .custom-detail ul li i { flex-shrink: 0; color: var(--ink-muted); }
-    .custom-detail > p {
-      font-size: 12px; color: var(--ink-muted); line-height: 1.5; font-style: italic;
-    }
     .pricing-guarantee {
       margin-top: 32px; text-align: center; display: flex;
       align-items: center; justify-content: center; gap: 8px;
@@ -289,24 +617,69 @@
     .pricing-guarantee i { flex-shrink: 0; color: var(--ink); }
 
     /* ─── FAQ ─────────────────────────────────────────── */
-    .faq-list { margin-top: 48px; max-width: 720px; }
-    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-list { margin-top: 48px; max-width: 760px; }
+    .faq-item {
+      border: 2px solid var(--border); border-radius: 16px;
+      background: var(--white); margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: var(--ink-muted); }
     .faq-q {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 0; cursor: pointer; background: none; border: none;
+      padding: 20px 24px; cursor: pointer; background: none; border: none;
       width: 100%; text-align: left; font-size: 16px; font-weight: 600;
       color: var(--ink); font-family: inherit; gap: 16px;
     }
     .faq-q i { flex-shrink: 0; transition: transform 0.3s; color: var(--ink-muted); }
     .faq-q.active i { transform: rotate(45deg); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
-    .faq-a.open { max-height: 300px; padding-bottom: 24px; }
+    .faq-a.open { max-height: 400px; padding: 0 24px 20px; }
     .faq-a p { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
+
+    /* ─── Final CTA ────────────────────────────────────── */
+    .final-cta {
+      max-width: 1280px; margin: 0 auto 80px; padding: 0 24px;
+    }
+    .final-cta-inner {
+      padding: 72px 56px; background: var(--ink); color: var(--cream);
+      border-radius: 32px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .final-cta-inner::before {
+      content: ""; position: absolute; top: -50%; right: -20%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,240,235,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      font-size: clamp(32px, 4vw, 48px); font-weight: 800;
+      letter-spacing: -1.5px; line-height: 1.1; max-width: 720px;
+      margin: 0 auto 20px; position: relative;
+    }
+    .final-cta p {
+      font-size: 17px; color: rgba(245,240,235,0.7);
+      max-width: 540px; margin: 0 auto 32px;
+      line-height: 1.6; position: relative;
+    }
+    .final-cta-buttons {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      position: relative;
+    }
+    .final-cta .btn-light {
+      background: var(--cream); color: var(--ink);
+      border: 2px solid var(--cream);
+    }
+    .final-cta .btn-light:hover { transform: translateY(-2px); }
+    .final-cta .btn-ghost {
+      background: transparent; color: var(--cream);
+      border: 2px solid rgba(245,240,235,0.25);
+    }
+    .final-cta .btn-ghost:hover { border-color: var(--cream); }
 
     /* ─── Footer ──────────────────────────────────────── */
     .footer {
       border-top: 1px solid var(--border); padding: 48px 24px;
-      max-width: 1200px; margin: 0 auto;
+      max-width: 1280px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 24px;
     }
@@ -315,7 +688,7 @@
       text-decoration: none; color: var(--ink);
     }
     .footer-logo span { font-weight: 700; font-size: 18px; }
-    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .footer-links a { text-decoration: none; color: var(--ink-muted); font-size: 13px; transition: color 0.2s; }
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-muted); }
@@ -364,11 +737,6 @@
       text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink-muted);
     }
     .contact-item .contact-value { font-size: 15px; font-weight: 600; margin-top: 2px; }
-    .modal-note {
-      margin-top: 24px; padding: 16px; background: var(--cream);
-      border-radius: 12px; font-size: 13px; color: var(--ink-light);
-      line-height: 1.6; text-align: center;
-    }
 
     /* ─── Mobile Menu ─────────────────────────────────── */
     .mobile-nav {
@@ -390,35 +758,52 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .animate-in { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-in { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
 
     /* ─── Responsive ──────────────────────────────────── */
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px 32px; }
-      .hero-visual { max-width: 500px; margin: 0 auto; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .luna-section { grid-template-columns: 1fr; padding: 48px; }
-      .pricing-cards { grid-template-columns: repeat(2, 1fr); }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+      .hero-visual { max-width: 560px; margin: 0 auto; }
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillar { grid-template-columns: 1fr; gap: 32px; }
+      .pillar.reverse { direction: ltr; }
+      .built-grid { grid-template-columns: repeat(2, 1fr); }
+      .roadmap-columns { grid-template-columns: 1fr; gap: 16px; }
+      .luna-section { grid-template-columns: 1fr; padding: 48px; gap: 40px; }
+      .security-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-cards { grid-template-columns: 1fr; }
+      .pricing-card.featured { order: -1; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .mobile-menu-btn { display: flex; }
       .hero { padding: 32px 20px 24px; }
-      .hero-text h2 { font-size: 32px; letter-spacing: -1px; }
-      .hero-text h4 { font-size: 15px; }
-      .hero-text p { font-size: 16px; }
-      .hero-mobile { width: 100px; right: -10px; bottom: -20px; }
-      .section { padding: 64px 20px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; gap: 24px; }
-      .luna-section { margin: 0 16px; padding: 32px 24px; border-radius: 20px; }
+      .hero-text h1 { font-size: 36px; letter-spacing: -1.2px; line-height: 1.05; }
+      .hero-text .sub { font-size: 16px; }
+      .hero-mobile { width: 100px; right: -10px; bottom: -16px; }
+      .trust { margin-top: 16px; padding: 0 20px; }
+      .trust-inner { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .trust-items { gap: 16px; }
+      .section { padding: 72px 20px; }
+      .section-full { padding: 72px 0; }
+      .section-full-inner { padding: 0 20px; }
+      .section-title { font-size: 28px; letter-spacing: -1px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .pillars-wrap { gap: 72px; }
+      .pillar-content h3 { font-size: 26px; }
+      .pillar-demo { padding: 20px; }
+      .built-grid { grid-template-columns: 1fr; }
+      .roadmap-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .luna-section { padding: 32px 24px; border-radius: 20px; gap: 32px; }
       .luna-visual { padding: 24px; }
       .security-grid { grid-template-columns: 1fr; }
-      .pricing-cards { grid-template-columns: 1fr; }
+      .pricing-card { padding: 28px; }
+      .final-cta { margin-bottom: 56px; padding: 0 20px; }
+      .final-cta-inner { padding: 48px 24px; border-radius: 24px; }
       .footer { flex-direction: column; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
       .modal-card { padding: 28px; }
@@ -430,18 +815,17 @@
   <!-- Nav -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
+      <a href="/" class="nav-logo">
         <div class="logo-icon"><i data-lucide="moon" stroke-width="1.5"></i></div>
         <span>MoonDesk</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#pillars">How it works</a></li>
         <li><a href="#luna">Luna AI</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="#security">Security</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><button class="nav-cta" onclick="openModal()">Book a Demo</button></li>
+        <li><a href="https://app.moondesk.app/signin" class="nav-cta">Sign in</a></li>
       </ul>
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
         <i data-lucide="menu" style="width:22px;height:22px"></i>
@@ -452,7 +836,7 @@
   <!-- Mobile Menu -->
   <div class="mobile-nav" id="mobile-nav">
     <div class="mobile-nav-header">
-      <a href="#" class="nav-logo">
+      <a href="/" class="nav-logo">
         <div class="logo-icon"><i data-lucide="moon" stroke-width="1.5"></i></div>
         <span>MoonDesk</span>
       </a>
@@ -461,31 +845,29 @@
       </button>
     </div>
     <ul class="mobile-nav-links">
-      <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
-      <li><a href="#how-it-works" onclick="closeMobileMenu()">How it works</a></li>
+      <li><a href="#pillars" onclick="closeMobileMenu()">How it works</a></li>
       <li><a href="#luna" onclick="closeMobileMenu()">Luna AI</a></li>
+      <li><a href="#roadmap" onclick="closeMobileMenu()">Roadmap</a></li>
       <li><a href="#security" onclick="closeMobileMenu()">Security</a></li>
       <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
-      <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
-      <li style="margin-top:16px"><button class="btn-primary" style="width:100%" onclick="closeMobileMenu();openModal();">Book a Demo</button></li>
+      <li style="margin-top:16px"><a href="https://app.moondesk.app/signin" class="btn-primary" style="display:block;text-align:center">Sign in</a></li>
     </ul>
   </div>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-text">
-      <h2 class="animate-in">MoonDesk</h2>
-      <h4 class="animate-in delay-1">AI-Powered Programme Management</h4>
-      <p class="animate-in delay-1">Built for NGOs, programme teams, and mission-driven organisations.</p>
-      <div class="hero-features animate-in delay-2">
-        <div class="hero-feature"><span class="dot"></span> Clear ownership and timelines</div>
-        <div class="hero-feature"><span class="dot"></span> Task completion with evidence linked to work</div>
-        <div class="hero-feature"><span class="dot"></span> AI assistant that understands your programmes</div>
-        <div class="hero-feature"><span class="dot"></span> CRM and opportunity tracking built in</div>
+      <div class="hero-badge animate-in"><span class="dot"></span> Now in private beta</div>
+      <h1 class="animate-in delay-1">The intelligence layer for <span class="accent">modern organisations.</span></h1>
+      <p class="sub animate-in delay-2">An AI brain that turns scattered knowledge into <strong>answers</strong>, <strong>actions</strong>, and <strong>accountability</strong>. Built for NGOs, foundations, and mission-driven teams.</p>
+      <div class="hero-triad animate-in delay-2">
+        <span class="triad-chip"><i data-lucide="message-circle-question"></i> Answers</span>
+        <span class="triad-chip"><i data-lucide="zap"></i> Actions</span>
+        <span class="triad-chip"><i data-lucide="shield-check"></i> Accountability</span>
       </div>
       <div class="hero-ctas animate-in delay-3">
-        <button class="btn-primary" onclick="openModal()">Book a Demo</button>
-        <a href="#features" class="btn-secondary">Explore Features</a>
+        <button class="btn-primary" onclick="openModal()">Book a demo <i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
+        <a href="#pillars" class="btn-secondary">See how it works</a>
       </div>
     </div>
     <div class="hero-visual animate-in delay-3">
@@ -494,205 +876,564 @@
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="section" id="features">
-    <p class="section-label">Features</p>
-    <h2 class="section-title">Everything your team needs in one place</h2>
-    <p class="section-subtitle">From programme tracking to AI-powered insights — MoonDesk replaces scattered tools with one unified platform.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="folder-kanban" style="width:22px;height:22px"></i></div>
-        <h3>Programme Management</h3>
-        <p>Track programmes with team assignment, timelines, progress analytics, and stakeholder links.</p>
+  <!-- Trust strip -->
+  <div class="trust">
+    <div class="trust-inner">
+      <span class="trust-label">Built with</span>
+      <div class="trust-items">
+        <span class="trust-item"><i data-lucide="lock"></i> AES-256 encryption</span>
+        <span class="trust-item"><i data-lucide="shield"></i> Row-level security</span>
+        <span class="trust-item"><i data-lucide="eye-off"></i> No model training</span>
+        <span class="trust-item"><i data-lucide="map-pin"></i> EU data residency</span>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="check-square" style="width:22px;height:22px"></i></div>
-        <h3>Task Tracking</h3>
-        <p>Create, assign, and track tasks with dependencies, evidence requirements, and manager approval workflows.</p>
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <section class="section" id="problem">
+    <div class="section-label"><span class="bar"></span> The problem</div>
+    <h2 class="section-title">Your organisation knows more than any single person in it. The trouble is finding it.</h2>
+    <p class="section-subtitle">Programmes get tracked in one tool, conversations in another, evidence in a third, decisions in someone's head. By the time you've found the answer, the moment has passed.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-number">— 01</div>
+        <h3>Knowledge fragmented</h3>
+        <p>Programmes in one tool, conversations in another, evidence in a third. Nothing speaks to anything else, and the synthesis happens in your team's heads.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="message-square" style="width:22px;height:22px"></i></div>
-        <h3>Team Messaging</h3>
-        <p>Direct messages, group chats, and threaded discussions — all scoped to your programmes and tasks.</p>
+      <div class="problem-card">
+        <div class="problem-number">— 02</div>
+        <h3>Reports take days</h3>
+        <p>Donor updates, board summaries, programme reviews — every report becomes a multi-day excavation across spreadsheets, drives, and email threads.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="users" style="width:22px;height:22px"></i></div>
-        <h3>CRM &amp; Stakeholders</h3>
-        <p>Manage partners, funders, and contacts with interaction timelines and programme linking.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="file-bar-chart" style="width:22px;height:22px"></i></div>
-        <h3>Reports &amp; Audit</h3>
-        <p>Dashboards, exports, and audit logs that keep delivery and reporting aligned.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="calendar" style="width:22px;height:22px"></i></div>
-        <h3>Calendar &amp; Check-ins</h3>
-        <p>Shared calendar with event management plus daily check-ins for team status updates.</p>
+      <div class="problem-card">
+        <div class="problem-number">— 03</div>
+        <h3>Accountability invisible</h3>
+        <p>Who promised what to whom? What evidence exists? Did the follow-up happen? When the answer lives in someone's inbox, accountability is unprovable.</p>
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="section" id="how-it-works" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding-left:calc((100% - 1200px)/2 + 24px);padding-right:calc((100% - 1200px)/2 + 24px);">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title">Up and running in minutes</h2>
-    <p class="section-subtitle">No complex onboarding. Just add your team and start working.</p>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><h3>Set up your workspace</h3><p>Create your organisation, invite team members, and assign roles.</p></div>
-      <div class="step"><div class="step-num">2</div><h3>Add programmes</h3><p>Create programmes with descriptions, timelines, and team assignments.</p></div>
-      <div class="step"><div class="step-num">3</div><h3>Track everything</h3><p>Assign tasks, set evidence requirements, and monitor progress with dashboards.</p></div>
-      <div class="step"><div class="step-num">4</div><h3>Get AI insights</h3><p>Luna AI helps triage emails, discover opportunities, and generate reports.</p></div>
+  <!-- THREE PILLARS -->
+  <section class="section-full white" id="pillars">
+    <div class="section-full-inner">
+      <div class="section-label"><span class="bar"></span> The MoonDesk way</div>
+      <h2 class="section-title">One brain. Three powers.</h2>
+      <p class="section-subtitle">MoonDesk pulls your scattered knowledge into a single intelligence layer that does three things exceptionally well — so you can stop coordinating tools and start running your organisation.</p>
+
+      <div class="pillars-wrap">
+
+        <!-- Pillar 1: Answers -->
+        <div class="pillar">
+          <div class="pillar-content">
+            <div class="pillar-tag"><span class="num">01</span> Answers</div>
+            <h3>Ask anything. Get a cited answer in seconds.</h3>
+            <p>MoonDesk reads everything your team produces — programmes, tasks, conversations, documents, stakeholder records — and answers your questions with citations to the exact source. No more "let me check and get back to you."</p>
+            <ul class="pillar-bullets">
+              <li><i data-lucide="check"></i> Hybrid semantic + structured retrieval across all your data</li>
+              <li><i data-lucide="check"></i> Every fact cited back to its source — task, email, document</li>
+              <li><i data-lucide="check"></i> Voice and text input, on desktop and mobile</li>
+              <li><i data-lucide="check"></i> Works in seconds, not minutes</li>
+            </ul>
+          </div>
+          <div class="pillar-demo">
+            <div class="demo-window">
+              <div class="demo-bar">
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-title">moondesk · ask anything</div>
+              </div>
+              <div class="demo-body">
+                <div class="demo-query"><i data-lucide="sparkles"></i> What happened with the AI4GOOD Festival this week?</div>
+                <div class="demo-answer">Three updates from this week. The venue contract was signed Tuesday <a href="#" class="cite">task</a>, the sponsor pitch deck went to MTN on Wednesday <a href="#" class="cite">email</a>, and Aisha confirmed the keynote speaker for day one <a href="#" class="cite">message</a>. Two follow-ups still pending.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Actions -->
+        <div class="pillar reverse">
+          <div class="pillar-content">
+            <div class="pillar-tag"><span class="num">02</span> Actions</div>
+            <h3>Don't just know. Act.</h3>
+            <p>Once MoonDesk surfaces what needs doing, you can do it from the same surface — draft an email, create a task, schedule a meeting, send a follow-up. Every action requires your approval. Nothing fires autonomously.</p>
+            <ul class="pillar-bullets">
+              <li><i data-lucide="check"></i> Draft email replies grounded in real context</li>
+              <li><i data-lucide="check"></i> Create tasks and assign owners from a single prompt</li>
+              <li><i data-lucide="check"></i> Schedule meetings with all the right context attached</li>
+              <li><i data-lucide="check"></i> Approval-first — you stay in the loop</li>
+            </ul>
+          </div>
+          <div class="pillar-demo">
+            <div class="demo-window">
+              <div class="demo-bar">
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-title">moondesk · proposed action</div>
+              </div>
+              <div class="demo-body">
+                <div class="demo-query"><i data-lucide="zap"></i> Follow up with stakeholders we haven't heard from in 30 days.</div>
+                <div class="demo-answer" style="background:var(--cream-dark);color:var(--ink);border:1.5px solid var(--border);">
+                  <strong>3 stakeholders need follow-up:</strong> Aisha Bello (MTN), Tunde Adekunle (Dangote), Sarah Okafor (Sterling Bank). Drafts ready for review.
+                </div>
+                <div class="demo-actions">
+                  <button class="demo-action-btn primary"><i data-lucide="send"></i> Review &amp; send all</button>
+                  <button class="demo-action-btn"><i data-lucide="edit-3"></i> Edit drafts</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Accountability -->
+        <div class="pillar">
+          <div class="pillar-content">
+            <div class="pillar-tag"><span class="num">03</span> Accountability</div>
+            <h3>Every commitment, every decision, every piece of evidence.</h3>
+            <p>MoonDesk doesn't just track tasks — it tracks the proof. Evidence linked to outcomes, decisions linked to discussions, follow-ups tied to commitments. When your funder asks, you have receipts.</p>
+            <ul class="pillar-bullets">
+              <li><i data-lucide="check"></i> Task completion requires evidence — files, links, approval</li>
+              <li><i data-lucide="check"></i> Every action logged with timestamp, actor, and context</li>
+              <li><i data-lucide="check"></i> Manager approval workflows for sensitive deliverables</li>
+              <li><i data-lucide="check"></i> Export-ready audit trail for funders and boards</li>
+            </ul>
+          </div>
+          <div class="pillar-demo">
+            <div class="demo-window">
+              <div class="demo-bar">
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-dot"></div>
+                <div class="demo-bar-title">moondesk · evidence trail</div>
+              </div>
+              <div class="demo-body">
+                <div class="demo-task">
+                  <div class="check done"><i data-lucide="check"></i></div>
+                  <div class="demo-task-text">
+                    <div class="label">Submit Q1 evidence pack to Ford Foundation</div>
+                    <div class="meta">Approved by Tunde · 3 days ago · <a href="#" class="demo-evidence-link"><i data-lucide="paperclip" style="width:11px;height:11px"></i> 7 files</a></div>
+                  </div>
+                </div>
+                <div class="demo-task">
+                  <div class="check done"><i data-lucide="check"></i></div>
+                  <div class="demo-task-text">
+                    <div class="label">Field visit report — Osun State centre</div>
+                    <div class="meta">Approved by Aisha · 1 week ago · <a href="#" class="demo-evidence-link"><i data-lucide="paperclip" style="width:11px;height:11px"></i> 3 files</a></div>
+                  </div>
+                </div>
+                <div class="demo-task">
+                  <div class="check"></div>
+                  <div class="demo-task-text">
+                    <div class="label">M&amp;E quarterly review prep</div>
+                    <div class="meta">Awaiting evidence · Due Friday</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Built for -->
+  <section class="section" id="built-for">
+    <div class="section-label"><span class="bar"></span> Built for</div>
+    <h2 class="section-title">Made for the teams that need to prove the work was done.</h2>
+    <p class="section-subtitle">MoonDesk is built specifically for mission-driven organisations where accountability isn't optional — where every action needs evidence and every report needs receipts.</p>
+    <div class="built-grid">
+      <div class="built-card">
+        <div class="built-icon"><i data-lucide="heart-handshake"></i></div>
+        <h4>NGOs &amp; foundations</h4>
+        <p>Programme tracking, donor reporting, evidence collection — built in.</p>
+      </div>
+      <div class="built-card">
+        <div class="built-icon"><i data-lucide="building-2"></i></div>
+        <h4>Social enterprises</h4>
+        <p>Manage impact programmes alongside your commercial operations.</p>
+      </div>
+      <div class="built-card">
+        <div class="built-icon"><i data-lucide="globe"></i></div>
+        <h4>Impact networks</h4>
+        <p>Coordinate across chapters, partners, and stakeholder organisations.</p>
+      </div>
+      <div class="built-card">
+        <div class="built-icon"><i data-lucide="briefcase"></i></div>
+        <h4>Programme teams</h4>
+        <p>Inside large orgs running mission-critical programmes with rigour.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="section-full ink" id="roadmap">
+    <div class="section-full-inner">
+      <div class="roadmap-header">
+        <div>
+          <div class="section-label"><span class="bar"></span> Roadmap</div>
+          <h2 class="section-title">Where MoonDesk is going.</h2>
+          <p class="section-subtitle">We ship every week. Here's what's live, what's next, and what's on the horizon — including the edge features that make MoonDesk an operating system, not just a tool.</p>
+        </div>
+        <div class="roadmap-meta">Updated · May 2026</div>
+      </div>
+
+      <div class="roadmap-columns">
+
+        <!-- LIVE NOW -->
+        <div class="roadmap-col now">
+          <div class="roadmap-col-header">
+            <span class="roadmap-col-pulse"></span>
+            <h3>Live now</h3>
+          </div>
+          <p class="roadmap-col-sub">Shipped, in production, used daily.</p>
+          <ul class="roadmap-items">
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="folder-kanban"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Programme &amp; task management <span class="roadmap-flag live">v1</span></div>
+                <div class="ri-desc">Programmes, tasks, dependencies, evidence-required completion</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="users"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">CRM &amp; stakeholders <span class="roadmap-flag live">v1</span></div>
+                <div class="ri-desc">Partners, funders, contacts, interaction timelines</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="message-square"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Team messaging <span class="roadmap-flag live">v1</span></div>
+                <div class="ri-desc">DMs, group chats, threaded discussions scoped to work</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="mail"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Shared inbox + Luna AI <span class="roadmap-flag live">v1</span></div>
+                <div class="ri-desc">Gmail-connected shared inbox with AI triage and routing</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="radio"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Opportunity Radar <span class="roadmap-flag live">v1</span></div>
+                <div class="ri-desc">AI-scanned funding sources matched to your focus areas</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="shield-check"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Multi-tenant security <span class="roadmap-flag live">v1</span></div>
+                <div class="ri-desc">Row-level security, audit logs, role-based access</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SHIPPING NEXT -->
+        <div class="roadmap-col next">
+          <div class="roadmap-col-header">
+            <span class="roadmap-col-pulse"></span>
+            <h3>Shipping next</h3>
+          </div>
+          <p class="roadmap-col-sub">In active development. Weeks, not months.</p>
+          <ul class="roadmap-items">
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="sparkles"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Brain Bar <span class="roadmap-flag">Q2</span></div>
+                <div class="ri-desc">Ask anything about your company from any screen — cited answers in seconds</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="plug-zap"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Google Workspace OAuth <span class="roadmap-flag">Q2</span></div>
+                <div class="ri-desc">Per-org Google connection — Gmail, Drive, Calendar with one click</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="file-text"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Drive deep indexing <span class="roadmap-flag">Q2</span></div>
+                <div class="ri-desc">Brain searches across Docs, Sheets, and PDFs in your Drive</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="mic"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Voice queries <span class="roadmap-flag">Q2</span></div>
+                <div class="ri-desc">Speak your questions on desktop and mobile</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="file-bar-chart"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Weekly digest <span class="roadmap-flag">Q3</span></div>
+                <div class="ri-desc">Auto-generated leadership summary every Monday morning</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="check-square"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Action approval flows <span class="roadmap-flag">Q3</span></div>
+                <div class="ri-desc">Draft emails, schedule meetings, create tasks — all via natural language</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ON THE HORIZON -->
+        <div class="roadmap-col horizon">
+          <div class="roadmap-col-header">
+            <span class="roadmap-col-pulse"></span>
+            <h3>On the horizon</h3>
+          </div>
+          <p class="roadmap-col-sub">Big bets. The edge of what MoonDesk becomes.</p>
+          <ul class="roadmap-items">
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="message-circle"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">WhatsApp Business <span class="roadmap-flag">2026</span></div>
+                <div class="ri-desc">Connect official WhatsApp — index conversations, reply from inside MoonDesk</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="banknote"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Paystack &amp; Flutterwave <span class="roadmap-flag">2026</span></div>
+                <div class="ri-desc">Financial data joins the brain — query revenue, cash position, transactions</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="network"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Knowledge graph <span class="roadmap-flag">2026</span></div>
+                <div class="ri-desc">Auto-extracted entities — people, orgs, deals, projects — fully linked</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="activity"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Closed-loop monitoring <span class="roadmap-flag">2026</span></div>
+                <div class="ri-desc">Stale deal alerts, churn signals, cash-flow forecasts — autonomous watchers</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="building"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">Multi-workspace <span class="roadmap-flag">2027</span></div>
+                <div class="ri-desc">Query across branches, regions, or partner organisations from one place</div>
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="ri-icon"><i data-lucide="terminal"></i></div>
+              <div class="ri-body">
+                <div class="ri-title">API &amp; agents <span class="roadmap-flag">2027</span></div>
+                <div class="ri-desc">Programmatic access — build your own agents on top of your company brain</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="roadmap-foot">
+        Want something specific? <a href="mailto:impact@tekforall.org">Tell us what to build next →</a>
+      </div>
     </div>
   </section>
 
   <!-- Luna AI -->
-  <section class="section" id="luna" style="padding-bottom:60px;">
+  <section class="section" id="luna">
     <div class="luna-section">
       <div>
-        <p class="section-label">AI Assistant</p>
-        <h2 class="section-title">Meet Luna</h2>
-        <p class="section-subtitle">Your AI assistant that understands your programmes, tasks, and team context.</p>
+        <div class="section-label"><span class="bar"></span> Luna AI</div>
+        <h2 class="section-title" style="font-size:38px;">Meet Luna — your team's AI co-pilot.</h2>
+        <p class="section-subtitle">Luna lives inside MoonDesk and understands your programmes, tasks, and team. She doesn't just answer — she takes action with your approval.</p>
         <div class="luna-features">
           <div class="luna-feature">
-            <div class="luna-feature-icon"><i data-lucide="mail" style="width:18px;height:18px"></i></div>
-            <div><h4>Email Triage</h4><p>Automatically categorises shared mailbox emails by urgency and suggests routing.</p></div>
+            <div class="luna-feature-icon"><i data-lucide="inbox" style="width:18px;height:18px"></i></div>
+            <div><h4>Email triage</h4><p>Classifies shared mailbox by urgency, suggests routing, drafts replies.</p></div>
           </div>
           <div class="luna-feature">
             <div class="luna-feature-icon"><i data-lucide="search" style="width:18px;height:18px"></i></div>
-            <div><h4>Opportunity Discovery</h4><p>Scans funding sources and classifies opportunities relevant to your organisation.</p></div>
+            <div><h4>Opportunity discovery</h4><p>Scans funding sources continuously and flags what's relevant to your org.</p></div>
           </div>
           <div class="luna-feature">
-            <div class="luna-feature-icon"><i data-lucide="bar-chart-3" style="width:18px;height:18px"></i></div>
-            <div><h4>Smart Reporting</h4><p>Ask questions about your data and get instant summaries and analysis.</p></div>
+            <div class="luna-feature-icon"><i data-lucide="file-bar-chart-2" style="width:18px;height:18px"></i></div>
+            <div><h4>Smart reporting</h4><p>Ask questions and get instant board-ready summaries and analyses.</p></div>
+          </div>
+          <div class="luna-feature">
+            <div class="luna-feature-icon"><i data-lucide="zap" style="width:18px;height:18px"></i></div>
+            <div><h4>Take action</h4><p>Create tasks, draft emails, schedule meetings — always with your approval.</p></div>
           </div>
         </div>
       </div>
       <div class="luna-visual">
         <div class="luna-bubble user">How are our Q1 programmes performing?</div>
-        <div class="luna-bubble ai"><div class="luna-tag">Luna</div>Across 7 active programmes, 4 are on track with 80%+ task completion. The Climate Resilience programme needs attention — 3 tasks are overdue.</div>
-        <div class="luna-bubble user">Draft a status update for the board</div>
-        <div class="luna-bubble ai"><div class="luna-tag">Luna</div>I'll compile the programme data and draft a board-ready summary. Give me a moment...</div>
+        <div class="luna-bubble ai">
+          <div class="luna-tag">Luna</div>
+          Across 7 active programmes, 4 are on track with 80%+ task completion. The Climate Resilience programme needs attention — 3 tasks are overdue.
+        </div>
+        <div class="luna-bubble user">Draft a status update for the board.</div>
+        <div class="luna-bubble ai">
+          <div class="luna-tag">Luna</div>
+          Drafted a one-page summary covering programme health, key wins this quarter, and the Climate Resilience risks. Ready for your review.
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Security -->
   <section class="section" id="security">
-    <p class="section-label">Security</p>
-    <h2 class="section-title">Built with trust</h2>
-    <p class="section-subtitle">Enterprise-grade security defaults for organisations that handle sensitive programme data.</p>
+    <div class="section-label"><span class="bar"></span> Security</div>
+    <h2 class="section-title">Trust isn't a feature. It's the foundation.</h2>
+    <p class="section-subtitle">Enterprise-grade security defaults from day one. We don't sell your data. We don't train on it. We don't share it with anyone you didn't authorise.</p>
     <div class="security-grid">
-      <div class="security-card"><i data-lucide="shield" style="width:20px;height:20px;margin-top:2px"></i><div><h4>Row-Level Security</h4><p>Every database query is scoped to the user's role and team membership.</p></div></div>
-      <div class="security-card"><i data-lucide="lock" style="width:20px;height:20px;margin-top:2px"></i><div><h4>Role-Based Access</h4><p>Four permission tiers with granular visibility controls.</p></div></div>
-      <div class="security-card"><i data-lucide="eye" style="width:20px;height:20px;margin-top:2px"></i><div><h4>Full Audit Trail</h4><p>Every action logged with timestamp, user, and details.</p></div></div>
-      <div class="security-card"><i data-lucide="cloud" style="width:20px;height:20px;margin-top:2px"></i><div><h4>Cloud Infrastructure</h4><p>Hosted on Vercel and Supabase with encryption at rest and TLS.</p></div></div>
+      <div class="security-card">
+        <div class="security-icon"><i data-lucide="shield"></i></div>
+        <h4>Row-level security</h4>
+        <p>Every query scoped to your org at the database layer. Cross-tenant access is impossible.</p>
+      </div>
+      <div class="security-card">
+        <div class="security-icon"><i data-lucide="key"></i></div>
+        <h4>Token-level encryption</h4>
+        <p>OAuth tokens encrypted with AES-GCM using keys held outside the database.</p>
+      </div>
+      <div class="security-card">
+        <div class="security-icon"><i data-lucide="eye"></i></div>
+        <h4>Full audit trail</h4>
+        <p>Every action logged with timestamp, actor, and context. Export-ready for compliance.</p>
+      </div>
+      <div class="security-card">
+        <div class="security-icon"><i data-lucide="eye-off"></i></div>
+        <h4>No model training</h4>
+        <p>Your data is never used to train AI models — by us, Anthropic, Google, or anyone.</p>
+      </div>
     </div>
   </section>
 
   <!-- Pricing -->
-  <section class="section" id="pricing" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding-left:calc((100% - 1200px)/2 + 24px);padding-right:calc((100% - 1200px)/2 + 24px);">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title">Simple, honest pricing</h2>
-    <p class="section-subtitle">One package. All features included. Choose by team size.</p>
-    <div class="pricing-cards">
-      <div class="pricing-card">
-        <div class="pricing-badge">Small Team</div>
-        <div class="pricing-price">&#8358;49,999</div>
-        <div class="pricing-period">/ month &middot; up to 5 users</div>
-        <ul class="pricing-list">
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Full MoonDesk access</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Role-based dashboards</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Shared mailbox + Luna AI</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Support included</li>
-        </ul>
-        <button class="pricing-btn" onclick="openModal()">Book a Demo</button>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Team</div>
-        <div class="pricing-price">&#8358;149,999</div>
-        <div class="pricing-period">/ month &middot; up to 20 users</div>
-        <ul class="pricing-list">
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Full MoonDesk access</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Team visibility + reporting</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Shared mailbox + Luna AI</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Support included</li>
-        </ul>
-        <button class="pricing-btn" onclick="openModal()">Book a Demo</button>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-badge">Custom</div>
-        <div class="pricing-price">&#8358;199,999</div>
-        <div class="pricing-period">/ month + per-user &middot; 21+ users</div>
-        <ul class="pricing-list">
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Full MoonDesk access</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Priority support + onboarding</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Governance and audit exports</li>
-          <li><i data-lucide="check" style="width:16px;height:16px"></i> Dedicated success reviews</li>
-        </ul>
-        <button class="pricing-btn" onclick="openModal()">Contact Us</button>
-        <!-- Custom detail block -->
-        <div class="custom-detail">
-          <h5>What bigger teams get</h5>
-          <ul>
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i> Priority support response times</li>
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i> Dedicated onboarding &amp; admin training</li>
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i> Monthly success reviews</li>
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i> Audit and governance exports</li>
+  <section class="section-full white" id="pricing">
+    <div class="section-full-inner">
+      <div class="section-label"><span class="bar"></span> Pricing</div>
+      <h2 class="section-title">Simple pricing. All features included.</h2>
+      <p class="section-subtitle">One product. Three tiers based on team size. No hidden seats, no feature gating, no surprises.</p>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="pricing-badge">Small team</div>
+          <div class="pricing-price">&#8358;49,999</div>
+          <div class="pricing-period">/ month · up to 5 users</div>
+          <ul class="pricing-list">
+            <li><i data-lucide="check"></i> Full MoonDesk access</li>
+            <li><i data-lucide="check"></i> Brain Bar &amp; Luna AI</li>
+            <li><i data-lucide="check"></i> Shared inbox + Drive integration</li>
+            <li><i data-lucide="check"></i> CRM + opportunity radar</li>
+            <li><i data-lucide="check"></i> Email support</li>
           </ul>
-          <p>Same full MoonDesk product — plus the structure and support larger teams need to scale adoption.</p>
+          <button class="pricing-btn" onclick="openModal()">Book a demo</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Team</div>
+          <div class="pricing-price">&#8358;149,999</div>
+          <div class="pricing-period">/ month · up to 20 users</div>
+          <ul class="pricing-list">
+            <li><i data-lucide="check"></i> Everything in Small Team</li>
+            <li><i data-lucide="check"></i> Team visibility &amp; reporting</li>
+            <li><i data-lucide="check"></i> Manager approval workflows</li>
+            <li><i data-lucide="check"></i> Advanced analytics</li>
+            <li><i data-lucide="check"></i> Priority support</li>
+          </ul>
+          <button class="pricing-btn" onclick="openModal()">Book a demo</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-badge">Custom</div>
+          <div class="pricing-price">&#8358;199,999</div>
+          <div class="pricing-period">/ month + per-user · 21+ users</div>
+          <ul class="pricing-list">
+            <li><i data-lucide="check"></i> Everything in Team</li>
+            <li><i data-lucide="check"></i> Dedicated onboarding</li>
+            <li><i data-lucide="check"></i> Monthly success reviews</li>
+            <li><i data-lucide="check"></i> Audit &amp; governance exports</li>
+            <li><i data-lucide="check"></i> SLA &amp; dedicated CS contact</li>
+          </ul>
+          <button class="pricing-btn" onclick="openModal()">Contact us</button>
         </div>
       </div>
+      <p class="pricing-guarantee"><i data-lucide="shield-check" style="width:16px;height:16px"></i> 7-day money-back guarantee for first-time customers.</p>
     </div>
-    <p class="pricing-guarantee"><i data-lucide="shield-check" style="width:16px;height:16px"></i> 7-day money-back guarantee for first-time customers.</p>
   </section>
 
   <!-- FAQ -->
   <section class="section" id="faq">
-    <p class="section-label">FAQ</p>
-    <h2 class="section-title">Common questions</h2>
+    <div class="section-label"><span class="bar"></span> FAQ</div>
+    <h2 class="section-title">Common questions.</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What is MoonDesk built for?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>MoonDesk is designed for NGOs, foundations, and mission-driven organisations that need to manage programmes, track tasks with evidence, coordinate teams, and maintain stakeholder relationships — all in one platform.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">What exactly does MoonDesk do that I can't do with Slack + Notion + Google Drive?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
+        <div class="faq-a"><p>Those tools store your knowledge. MoonDesk reasons across it. Ask "what happened with the Ford Foundation grant this month?" — MoonDesk pulls from tasks, emails, documents, and stakeholder records to give you a single cited answer in seconds. That cross-tool synthesis is the product.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I use it on mobile?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Yes. MoonDesk is fully responsive and works on phones, tablets, and desktops.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">Is my data used to train AI models?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
+        <div class="faq-a"><p>No. Never. Not by us, not by Anthropic (our AI provider), not by Google. We use business-tier APIs that prohibit training on customer data — read more in our <a href="/privacy" style="color:var(--ink);text-decoration:underline;">privacy policy</a>.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">How does Luna AI work?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Luna is an AI assistant that understands your programme context and can help triage emails, discover funding opportunities, generate reports, and answer questions about your data.</p></div>
+        <div class="faq-a"><p>Luna reads your programme context and can answer questions, draft emails, create tasks, schedule meetings, and run reports. She never takes write actions without your approval — every action is a proposal you accept, edit, or reject.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Is my data secure?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Absolutely. MoonDesk uses row-level security, role-based access control, full audit logging, and encrypted cloud infrastructure.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">What about security and compliance?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
+        <div class="faq-a"><p>AES-256 encryption at rest, TLS 1.3 in transit, row-level security at the database, OAuth tokens encrypted with separate keys, full audit logging. Your database lives in the EU. We're working toward SOC 2 — happy to talk specifics if your org needs them.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How do I get started?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Click "Book a Demo" to get in touch. We'll set up your workspace, onboard your team, and have you running within a day.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use MoonDesk on mobile?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
+        <div class="faq-a"><p>Yes — MoonDesk is fully responsive. Phone, tablet, desktop. Voice queries work on mobile browsers too (where the browser supports it).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How fast can we get started?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
+        <div class="faq-a"><p>Book a demo and we'll set up your workspace, invite your team, connect Google Workspace, and have you live within a day. Onboarding is white-glove for every new org.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">What's your refund policy?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>7-day money-back guarantee. If you're a first-time customer and MoonDesk isn't a fit, cancel within 7 days of your first payment and we'll refund you in full — no long forms, no stress. Applies to first-time subscriptions only.</p></div>
+        <div class="faq-a"><p>7-day money-back guarantee for first-time customers. If MoonDesk isn't a fit, email <a href="mailto:support@moondesk.app" style="color:var(--ink);text-decoration:underline;">support@moondesk.app</a> within 7 days of first payment and we'll refund you in full.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta-inner">
+      <h2>Your organisation already has the answers. We just help you find them.</h2>
+      <p>Book a 20-minute demo. We'll show you MoonDesk on your data — or set up a sandbox workspace with sample programmes if you want to try first.</p>
+      <div class="final-cta-buttons">
+        <button class="btn-primary btn-light" onclick="openModal()">Book a demo <i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
+        <a href="#pillars" class="btn-primary btn-ghost">See how it works</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <a href="#" class="footer-logo">
+    <a href="/" class="footer-logo">
       <div class="logo-icon sm"><i data-lucide="moon" stroke-width="1.5"></i></div>
       <span>MoonDesk</span>
     </a>
     <ul class="footer-links">
-      <li><a href="#features">Features</a></li>
+      <li><a href="#pillars">How it works</a></li>
       <li><a href="#luna">Luna AI</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#security">Security</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/terms">Terms</a></li>
       <li><a href="mailto:impact@tekforall.org">Contact</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2026 MoonDesk. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 MoonDesk · A Tek4All product</p>
   </footer>
 
   <!-- Contact Modal -->
@@ -705,11 +1446,10 @@
         <div class="contact-icon"><i data-lucide="mail" style="width:20px;height:20px"></i></div>
         <div><div class="contact-label">Email</div><div class="contact-value">impact@tekforall.org</div></div>
       </a>
-      <a href="tel:+2347031064" class="contact-item">
-        <div class="contact-icon"><i data-lucide="phone" style="width:20px;height:20px"></i></div>
-        <div><div class="contact-label">Phone</div><div class="contact-value">+234 703 1064</div></div>
+      <a href="mailto:support@moondesk.app" class="contact-item">
+        <div class="contact-icon"><i data-lucide="life-buoy" style="width:20px;height:20px"></i></div>
+        <div><div class="contact-label">Support</div><div class="contact-value">support@moondesk.app</div></div>
       </a>
-      <div class="modal-note">We typically respond within 24 hours. Looking forward to hearing from you.</div>
     </div>
   </div>
 
@@ -757,9 +1497,9 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.feature-card, .step, .security-card, .pricing-card').forEach(function(el) {
+    document.querySelectorAll('.problem-card, .built-card, .pillar, .roadmap-item, .security-card, .pricing-card').forEach(function(el) {
       el.style.opacity = '0';
-      el.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+      el.style.animation = 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards';
       el.style.animationPlayState = 'paused';
       observer.observe(el);
     });
