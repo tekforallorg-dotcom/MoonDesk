@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — MoonDesk</title>
+  <meta name="description" content="MoonDesk Terms of Service. The agreement between you and Tek4All for using the MoonDesk platform." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%231a1a1a'/><path d='M14 10a6 6 0 0 0 9 9 8 8 0 1 1-9-9z' fill='none' stroke='%23f5f0eb' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f5f0eb;
+      --cream-dark: #ebe5de;
+      --ink: #1a1a1a;
+      --ink-light: #555;
+      --ink-muted: #888;
+      --border: #d4cfc8;
+      --white: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245, 240, 235, 0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+    }
+    .logo-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--ink); border: 2px solid var(--ink);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .logo-icon i, .logo-icon svg { color: var(--cream); width: 20px; height: 20px; }
+    .logo-icon.sm { width: 32px; height: 32px; }
+    .logo-icon.sm i, .logo-icon.sm svg { width: 16px; height: 16px; }
+    .nav-logo span { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-light);
+      font-size: 14px; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--ink); color: var(--cream) !important;
+      padding: 10px 24px; border-radius: 100px; font-weight: 600 !important;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer; border: none; font-size: 14px; font-family: inherit;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .mobile-menu-btn {
+      display: none; background: none; border: 2px solid var(--border);
+      border-radius: 12px; padding: 8px; cursor: pointer; color: var(--ink);
+    }
+
+    .legal-hero {
+      max-width: 880px; margin: 0 auto; padding: 80px 24px 48px;
+      text-align: left;
+    }
+    .legal-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--ink-muted); margin-bottom: 20px;
+      padding: 6px 14px; border: 1px solid var(--border);
+      border-radius: 100px; background: var(--white);
+    }
+    .legal-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--ink);
+    }
+    .legal-hero h1 {
+      font-size: clamp(40px, 5vw, 56px); font-weight: 800;
+      letter-spacing: -1.5px; line-height: 1.05; color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .legal-hero .lede {
+      font-size: 18px; color: var(--ink-light); line-height: 1.7; max-width: 680px;
+    }
+    .legal-meta {
+      margin-top: 32px; padding: 20px 24px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 16px;
+      display: flex; gap: 32px; flex-wrap: wrap;
+    }
+    .legal-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .legal-meta-item .label {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--ink-muted);
+    }
+    .legal-meta-item .value {
+      font-size: 14px; font-weight: 600; color: var(--ink);
+    }
+
+    .legal-wrap {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px 120px;
+      display: grid; grid-template-columns: 240px 1fr; gap: 64px;
+      align-items: flex-start;
+    }
+    .legal-toc {
+      position: sticky; top: 96px;
+      padding: 24px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 18px;
+    }
+    .legal-toc h4 {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--ink-muted); margin-bottom: 16px;
+    }
+    .legal-toc ol {
+      list-style: none; counter-reset: toc;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .legal-toc li { counter-increment: toc; }
+    .legal-toc a {
+      text-decoration: none; color: var(--ink-light);
+      font-size: 13px; line-height: 1.5;
+      transition: color 0.2s;
+      display: flex; gap: 8px;
+    }
+    .legal-toc a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: var(--ink-muted); flex-shrink: 0;
+    }
+    .legal-toc a:hover { color: var(--ink); }
+
+    .legal-body { max-width: 720px; }
+    .legal-body section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .legal-body section:first-of-type { padding-top: 0; }
+    .legal-body section:last-of-type { border-bottom: none; }
+    .legal-body h2 {
+      font-size: 26px; font-weight: 800; letter-spacing: -0.5px;
+      line-height: 1.2; margin-bottom: 16px; color: var(--ink);
+    }
+    .legal-body h2 .num {
+      font-family: 'DM Mono', monospace; font-size: 14px;
+      color: var(--ink-muted); margin-right: 12px; font-weight: 500;
+    }
+    .legal-body h3 {
+      font-size: 16px; font-weight: 700; margin-top: 24px;
+      margin-bottom: 8px; color: var(--ink);
+    }
+    .legal-body p {
+      font-size: 15px; line-height: 1.75; color: var(--ink-light);
+      margin-bottom: 14px;
+    }
+    .legal-body p:last-child { margin-bottom: 0; }
+    .legal-body ul {
+      list-style: none; margin: 12px 0 16px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .legal-body ul li {
+      padding-left: 24px; position: relative;
+      font-size: 15px; line-height: 1.7; color: var(--ink-light);
+    }
+    .legal-body ul li::before {
+      content: ""; position: absolute; left: 0; top: 11px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--ink);
+    }
+    .legal-body strong { color: var(--ink); font-weight: 600; }
+    .legal-body a {
+      color: var(--ink); text-decoration: underline;
+      text-underline-offset: 3px; text-decoration-thickness: 1px;
+    }
+    .legal-body a:hover { text-decoration-thickness: 2px; }
+    .legal-body code {
+      font-family: 'DM Mono', monospace; font-size: 13px;
+      background: var(--cream-dark); padding: 2px 8px;
+      border-radius: 6px; color: var(--ink);
+    }
+    .legal-callout {
+      margin: 16px 0; padding: 20px 24px;
+      background: var(--ink); color: var(--cream);
+      border-radius: 16px;
+    }
+    .legal-callout strong { color: var(--cream); font-weight: 700; }
+    .legal-callout p { color: rgba(245,240,235,0.85); margin-bottom: 0; }
+
+    .footer {
+      border-top: 1px solid var(--border); padding: 48px 24px;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--ink);
+    }
+    .footer-logo span { font-weight: 700; font-size: 18px; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { text-decoration: none; color: var(--ink-muted); font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-muted); }
+
+    .mobile-nav {
+      position: fixed; inset: 0; background: var(--cream);
+      z-index: 200; padding: 24px; display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-nav.active { opacity: 1; pointer-events: all; }
+    .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .mobile-nav-links a {
+      display: block; text-decoration: none; color: var(--ink);
+      font-size: 24px; font-weight: 600; padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .btn-primary {
+      background: var(--ink); color: var(--cream); padding: 14px 32px;
+      border-radius: 100px; font-weight: 600; font-size: 15px;
+      text-decoration: none; border: 2px solid var(--ink);
+      cursor: pointer; font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+    @media (max-width: 1024px) {
+      .legal-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .legal-toc { position: static; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .legal-hero { padding: 48px 20px 32px; }
+      .legal-hero h1 { font-size: 36px; letter-spacing: -1px; }
+      .legal-hero .lede { font-size: 16px; }
+      .legal-wrap { padding: 0 20px 80px; }
+      .legal-body h2 { font-size: 22px; }
+      .legal-meta { gap: 20px; padding: 16px; }
+      .footer { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon"><i data-lucide="moon" stroke-width="1.5"></i></div>
+        <span>MoonDesk</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#how-it-works">How it works</a></li>
+        <li><a href="/#luna">Luna AI</a></li>
+        <li><a href="/#security">Security</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="https://app.moondesk.app/signin" class="nav-cta">Sign in</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <i data-lucide="menu" style="width:22px;height:22px"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon"><i data-lucide="moon" stroke-width="1.5"></i></div>
+        <span>MoonDesk</span>
+      </a>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Close menu">
+        <i data-lucide="x" style="width:22px;height:22px"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="/#features" onclick="closeMobileMenu()">Features</a></li>
+      <li><a href="/#how-it-works" onclick="closeMobileMenu()">How it works</a></li>
+      <li><a href="/#luna" onclick="closeMobileMenu()">Luna AI</a></li>
+      <li><a href="/#security" onclick="closeMobileMenu()">Security</a></li>
+      <li><a href="/#pricing" onclick="closeMobileMenu()">Pricing</a></li>
+      <li><a href="/#faq" onclick="closeMobileMenu()">FAQ</a></li>
+      <li style="margin-top:16px"><a href="https://app.moondesk.app/signin" class="btn-primary" style="display:block;text-align:center">Sign in</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="legal-hero">
+    <div class="legal-eyebrow"><span class="dot"></span> Terms of Service</div>
+    <h1>The agreement between you and us.</h1>
+    <p class="lede">These terms govern your use of MoonDesk. They cover what you can do, what we provide, who owns what, and what happens when things go sideways. Read them — they're written to be understood, not to confuse you.</p>
+    <div class="legal-meta">
+      <div class="legal-meta-item">
+        <span class="label">Last updated</span>
+        <span class="value">11 May 2026</span>
+      </div>
+      <div class="legal-meta-item">
+        <span class="label">Effective</span>
+        <span class="value">11 May 2026</span>
+      </div>
+      <div class="legal-meta-item">
+        <span class="label">Version</span>
+        <span class="value">1.0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <div class="legal-wrap">
+    <aside class="legal-toc">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#agreement">The agreement</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#the-service">The service</a></li>
+        <li><a href="#your-account">Your account</a></li>
+        <li><a href="#acceptable-use">Acceptable use</a></li>
+        <li><a href="#your-content">Your content</a></li>
+        <li><a href="#our-ip">Our intellectual property</a></li>
+        <li><a href="#third-party">Third-party services</a></li>
+        <li><a href="#payment">Payment and cancellation</a></li>
+        <li><a href="#ai-output">AI output and accuracy</a></li>
+        <li><a href="#suspension">Suspension and termination</a></li>
+        <li><a href="#warranties">Warranties</a></li>
+        <li><a href="#liability">Limitation of liability</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#governing-law">Governing law</a></li>
+        <li><a href="#changes">Changes to these terms</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </aside>
+
+    <main class="legal-body">
+
+      <section id="agreement">
+        <h2><span class="num">01</span>The agreement</h2>
+        <p>These Terms of Service ("Terms") form a binding agreement between you and <strong>Technology for All Initiative (Tek4All)</strong>, the operator of MoonDesk. "MoonDesk", "we", "us", and "our" refer to Tek4All. "You" refers to you personally and the organisation you represent.</p>
+        <p>By creating an account, signing in, or using any part of the service, you agree to be bound by these Terms and our <a href="/privacy">Privacy Policy</a>. If you don't agree, don't use the service.</p>
+      </section>
+
+      <section id="eligibility">
+        <h2><span class="num">02</span>Eligibility</h2>
+        <p>To use MoonDesk, you must:</p>
+        <ul>
+          <li>Be at least 18 years old.</li>
+          <li>Have the legal authority to enter into agreements on behalf of yourself or your organisation.</li>
+          <li>Provide accurate, complete information when you register and keep it current.</li>
+          <li>Not be barred from using our service under any applicable law.</li>
+        </ul>
+        <p>If you're using MoonDesk on behalf of an organisation, you represent that you have authority to bind that organisation to these Terms.</p>
+      </section>
+
+      <section id="the-service">
+        <h2><span class="num">03</span>The service</h2>
+        <p>MoonDesk is an intelligence layer for organisations. It helps teams turn scattered knowledge into answers, actions, and accountability through a combination of programme management features, AI-powered search and synthesis, and integration with tools your organisation already uses.</p>
+        <p>We work hard to keep the service running well, but we don't guarantee uptime, availability, or specific performance levels in this current phase. We'll communicate transparently about outages, planned maintenance, and material issues.</p>
+        <p>We continuously evolve the product — adding features, refining existing ones, occasionally retiring features that don't work. We'll give reasonable notice before removing anything you actively depend on.</p>
+      </section>
+
+      <section id="your-account">
+        <h2><span class="num">04</span>Your account</h2>
+        <p>You're responsible for everything that happens under your account. That means:</p>
+        <ul>
+          <li><strong>Keep your credentials safe.</strong> Don't share your password, magic-link emails, or session tokens.</li>
+          <li><strong>Notify us of breach.</strong> If you suspect unauthorised access, contact <a href="mailto:support@moondesk.app">support@moondesk.app</a> immediately.</li>
+          <li><strong>Manage your team.</strong> If you're an admin, you control who has access to your organisation's data. Removing teammates is your responsibility.</li>
+          <li><strong>One account per person.</strong> Don't share accounts. Each user must have their own login.</li>
+        </ul>
+      </section>
+
+      <section id="acceptable-use">
+        <h2><span class="num">05</span>Acceptable use</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use MoonDesk for anything illegal, fraudulent, or harmful.</li>
+          <li>Upload malware, viruses, or any code intended to disrupt service or compromise security.</li>
+          <li>Attempt to bypass our security, rate limits, or access controls.</li>
+          <li>Scrape, reverse-engineer, decompile, or otherwise extract our source code or trained models.</li>
+          <li>Resell, sublicense, or commercialise the service without our written permission.</li>
+          <li>Impersonate any person or misrepresent your affiliation with any organisation.</li>
+          <li>Use the service to send spam, harass others, or distribute hate speech.</li>
+          <li>Use AI features to generate content that violates anyone's rights (copyright, privacy, dignity).</li>
+          <li>Conduct security research on the service without coordination with us — we welcome responsible disclosure to <a href="mailto:support@moondesk.app">support@moondesk.app</a>.</li>
+        </ul>
+        <p>We reserve the right to suspend or terminate accounts engaged in any of the above.</p>
+      </section>
+
+      <section id="your-content">
+        <h2><span class="num">06</span>Your content</h2>
+        <div class="legal-callout">
+          <p><strong>You own your content.</strong> Everything you put into MoonDesk — programmes, tasks, messages, files, stakeholder records, anything else — belongs to you and your organisation. We don't claim ownership and we never sell it.</p>
+        </div>
+        <p>To operate the service, you grant us a limited, non-exclusive licence to host, process, transmit, display, and back up your content solely for the purpose of providing MoonDesk to you. This licence ends when you delete the content or close your account.</p>
+        <p>You represent that you have the right to share with us any content you upload, and that doing so doesn't violate anyone's rights, contracts, or applicable law.</p>
+        <p>When you connect a third-party service (Google Workspace, etc.), the data MoonDesk reads from that service remains owned by you or your organisation as the third-party service's terms specify. We process it only as described in our Privacy Policy.</p>
+      </section>
+
+      <section id="our-ip">
+        <h2><span class="num">07</span>Our intellectual property</h2>
+        <p>MoonDesk's software, design, brand, logos, copy, documentation, and underlying technology are owned by Tek4All. These Terms don't transfer any IP rights to you beyond your right to use the service for its intended purpose.</p>
+        <p>You may not:</p>
+        <ul>
+          <li>Copy, modify, or create derivative works of MoonDesk software.</li>
+          <li>Use the MoonDesk name or logo without written permission, except to identify your use of the service.</li>
+          <li>Remove or alter any copyright, trademark, or proprietary notices.</li>
+        </ul>
+        <p>If you provide us with feedback, suggestions, or ideas, we're free to use them without obligation or attribution.</p>
+      </section>
+
+      <section id="third-party">
+        <h2><span class="num">08</span>Third-party services</h2>
+        <p>MoonDesk integrates with services operated by other companies — Google Workspace, payment providers, and others as they're added. By connecting one of these services:</p>
+        <ul>
+          <li>You authorise us to access and process data from that service on your behalf, within the scopes you grant.</li>
+          <li>You agree to that service's own terms and privacy policy in addition to ours.</li>
+          <li>You can disconnect at any time. Disconnection stops future access but doesn't automatically delete data already imported into MoonDesk.</li>
+        </ul>
+        <p>We're not responsible for the availability, accuracy, or behaviour of third-party services. If a connected service goes down or changes its API, affected MoonDesk features may break until we adapt.</p>
+      </section>
+
+      <section id="payment">
+        <h2><span class="num">09</span>Payment and cancellation</h2>
+        <p><strong>Plans and billing.</strong> Paid plans are billed monthly or annually as selected. Prices and plan details are shown on the <a href="/#pricing">pricing page</a> at the time of purchase. We may adjust prices for new subscriptions or at the next renewal; we'll notify existing customers in writing at least 30 days before any change affects them.</p>
+        <p><strong>Refunds.</strong> First-time customers may request a full refund within 7 days of first payment by emailing <a href="mailto:support@moondesk.app">support@moondesk.app</a>. After the 7-day window, payments are non-refundable for the current billing period.</p>
+        <p><strong>Cancellation.</strong> You can cancel anytime. Cancellation takes effect at the end of your current billing period — you keep access until then. After cancellation, we retain your data for 30 days in case you reactivate, then permanently delete it (see the <a href="/privacy#retention">Privacy Policy</a>).</p>
+        <p><strong>Failed payments.</strong> If we can't collect payment, we'll notify you and give a reasonable grace period before suspending access.</p>
+        <p><strong>Taxes.</strong> Prices may exclude applicable taxes. You're responsible for any taxes owed in your jurisdiction.</p>
+      </section>
+
+      <section id="ai-output">
+        <h2><span class="num">10</span>AI output and accuracy</h2>
+        <div class="legal-callout">
+          <p><strong>AI output is not authoritative.</strong> Brain answers, Luna responses, and any other AI-generated content from MoonDesk are best-effort synthesis from your data — not legal, medical, financial, or other professional advice. Verify before acting on consequential decisions.</p>
+        </div>
+        <p>MoonDesk's AI features use large language models from Anthropic and Google. These models can make mistakes — they can misunderstand questions, miss context, generate plausible-sounding but incorrect statements, or fail to cite a relevant source.</p>
+        <p>To reduce this risk, MoonDesk Brain attaches citations to every factual claim so you can verify against the source. You are responsible for any decisions you make based on AI output.</p>
+        <p>We may use anonymised, aggregated patterns of AI use to improve the product (which queries succeed, which fail, where retrievals are weak). We do not train models on your data — see the <a href="/privacy#ai-and-training">Privacy Policy</a>.</p>
+      </section>
+
+      <section id="suspension">
+        <h2><span class="num">11</span>Suspension and termination</h2>
+        <p><strong>We can suspend or terminate</strong> your access if:</p>
+        <ul>
+          <li>You materially breach these Terms.</li>
+          <li>You engage in conduct that risks harm to other users, our service, or third parties.</li>
+          <li>We're legally required to do so.</li>
+          <li>You fail to pay after a reasonable grace period (paid plans only).</li>
+        </ul>
+        <p>Where possible, we'll give notice and an opportunity to cure the issue before terminating. Where the breach is severe (security, abuse, illegality), we may suspend immediately and notify you afterwards.</p>
+        <p><strong>You can terminate</strong> at any time by cancelling your account. Termination doesn't refund pre-paid fees except as covered by our refund policy above.</p>
+        <p>Sections that should survive termination (Your Content, Our IP, Warranties, Liability, Indemnification, Governing Law) continue to apply after these Terms end.</p>
+      </section>
+
+      <section id="warranties">
+        <h2><span class="num">12</span>Warranties</h2>
+        <p>We provide MoonDesk "as is" and "as available". We work hard to make it reliable, secure, and useful, but we cannot make absolute guarantees about uptime, accuracy, fitness for any specific purpose, or any other warranty beyond what's expressly stated.</p>
+        <p>To the maximum extent permitted by law, we disclaim all implied warranties of merchantability, fitness for a particular purpose, non-infringement, and any warranty arising from course of dealing or usage of trade.</p>
+        <p>This section does not limit any warranty that cannot be excluded under applicable law.</p>
+      </section>
+
+      <section id="liability">
+        <h2><span class="num">13</span>Limitation of liability</h2>
+        <p>To the maximum extent permitted by law:</p>
+        <ul>
+          <li>We are not liable for indirect, incidental, special, consequential, or punitive damages — including lost profits, lost revenue, lost data, lost goodwill, or business interruption — even if we knew such damages were possible.</li>
+          <li>Our total aggregate liability under these Terms is capped at the amounts you paid us in the 12 months before the event giving rise to the claim, or USD 100, whichever is greater.</li>
+        </ul>
+        <p>This cap applies in aggregate across all claims and all causes of action. Nothing in this section limits liability that cannot be limited under applicable law (such as liability for death, personal injury caused by negligence, or fraud).</p>
+      </section>
+
+      <section id="indemnification">
+        <h2><span class="num">14</span>Indemnification</h2>
+        <p>You agree to indemnify and hold harmless Tek4All, its officers, employees, and subprocessors from any third-party claims, damages, or expenses (including reasonable legal fees) arising from:</p>
+        <ul>
+          <li>Your breach of these Terms.</li>
+          <li>Your violation of applicable law.</li>
+          <li>Your content, including any allegation that it infringes someone's rights.</li>
+          <li>Your misuse of the service.</li>
+        </ul>
+        <p>We will give you prompt notice of any claim and cooperate reasonably in the defence. You may not settle any claim without our prior written consent.</p>
+      </section>
+
+      <section id="governing-law">
+        <h2><span class="num">15</span>Governing law</h2>
+        <p>These Terms are governed by the laws of the Federal Republic of Nigeria. Any dispute arising from these Terms or your use of MoonDesk is subject to the exclusive jurisdiction of the courts of Lagos State, Nigeria.</p>
+        <p>If you're a consumer based in a jurisdiction that grants you mandatory protections under local law, those protections continue to apply regardless of this section.</p>
+        <p>Before filing any formal claim, we ask that you reach out to <a href="mailto:support@moondesk.app">support@moondesk.app</a> so we can try to resolve the issue directly.</p>
+      </section>
+
+      <section id="changes">
+        <h2><span class="num">16</span>Changes to these terms</h2>
+        <p>We may update these Terms from time to time. For material changes — anything that affects your rights, our liability, or how the service fundamentally operates — we'll notify you by email and in-app notice at least 30 days before the change takes effect. For minor clarifications, we'll update the "Last updated" date at the top of this page.</p>
+        <p>If you don't agree with a material change, you can cancel your account before it takes effect. Continuing to use the service after a change takes effect means you accept the updated Terms.</p>
+        <p>Previous versions of these Terms are available on request.</p>
+      </section>
+
+      <section id="contact">
+        <h2><span class="num">17</span>Contact us</h2>
+        <p>For anything related to these Terms — questions, disputes, complaints, business matters:</p>
+        <ul>
+          <li><strong>Support &amp; Terms questions:</strong> <a href="mailto:support@moondesk.app">support@moondesk.app</a></li>
+          <li><strong>General &amp; partnerships:</strong> <a href="mailto:impact@tekforall.org">impact@tekforall.org</a></li>
+          <li><strong>Mailing address:</strong> Technology for All Initiative (Tek4All), Lagos, Nigeria — full address available on request</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="/" class="footer-logo">
+      <div class="logo-icon sm"><i data-lucide="moon" stroke-width="1.5"></i></div>
+      <span>MoonDesk</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#luna">Luna AI</a></li>
+      <li><a href="/#security">Security</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="mailto:impact@tekforall.org">Contact</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 MoonDesk. All rights reserved.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    function toggleMobileMenu() {
+      document.getElementById('mobile-nav').classList.toggle('active');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobile-nav').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
