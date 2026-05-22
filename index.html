@@ -1599,20 +1599,79 @@
     <p class="footer-copy">&copy; 2026 MoonDesk · A Tek4All product</p>
   </footer>
 
-  <!-- Contact Modal -->
+  <!-- Apply for Pilot Modal -->
   <div class="modal-overlay" id="contact-modal">
-    <div class="modal-card">
+    <div class="modal-card wide">
       <button class="modal-close" onclick="closeModal()" aria-label="Close"><i data-lucide="x" style="width:16px;height:16px"></i></button>
       <h2>Apply for pilot</h2>
-      <p class="modal-sub">Free 30 days. Limited cohort. Tell us about your organisation and we&rsquo;ll set up your workspace.</p>
-      <a href="mailto:impact@tekforall.org" class="contact-item">
-        <div class="contact-icon"><i data-lucide="mail" style="width:20px;height:20px"></i></div>
-        <div><div class="contact-label">Email</div><div class="contact-value">impact@tekforall.org</div></div>
-      </a>
-      <a href="mailto:support@moondesk.app" class="contact-item">
-        <div class="contact-icon"><i data-lucide="life-buoy" style="width:20px;height:20px"></i></div>
-        <div><div class="contact-label">Support</div><div class="contact-value">support@moondesk.app</div></div>
-      </a>
+      <p class="modal-sub">Free 30 days. Limited cohort. Tell us about your organisation and we&rsquo;ll be in touch within 24 hours.</p>
+
+      <form id="pilot-form" class="pilot-form" onsubmit="submitPilotForm(event)">
+        <input type="hidden" name="access_key" value="a24ecb36-f900-4f95-8ac8-41053034d7c5" />
+        <input type="hidden" name="subject" value="New MoonDesk Pilot Application" />
+        <input type="hidden" name="from_name" value="MoonDesk Landing" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="pilot-form-row">
+          <label for="pf-name">Your name</label>
+          <input id="pf-name" name="name" type="text" required placeholder="Jane Doe" />
+        </div>
+
+        <div class="pilot-form-row">
+          <label for="pf-org">Organisation</label>
+          <input id="pf-org" name="organisation" type="text" required placeholder="Acme NGO" />
+        </div>
+
+        <div class="pilot-form-row">
+          <label for="pf-email">Work email</label>
+          <input id="pf-email" name="email" type="email" required placeholder="jane@acme.org" />
+        </div>
+
+        <div class="pilot-form-row">
+          <label for="pf-role">Your role</label>
+          <input id="pf-role" name="role" type="text" required placeholder="Programme Manager" />
+        </div>
+
+        <div class="pilot-form-row">
+          <label for="pf-sector">Sector</label>
+          <select id="pf-sector" name="sector" required>
+            <option value="">Choose sector</option>
+            <option value="NGO / Non-profit">NGO / Non-profit</option>
+            <option value="SME / Business">SME / Business</option>
+            <option value="Consultancy / Agency">Consultancy / Agency</option>
+            <option value="Government / Public sector">Government / Public sector</option>
+            <option value="Research / Academic">Research / Academic</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="pilot-form-row">
+          <label for="pf-size">Team size</label>
+          <select id="pf-size" name="team_size" required>
+            <option value="">Choose team size</option>
+            <option value="1-5">1-5</option>
+            <option value="6-20">6-20</option>
+            <option value="21-100">21-100</option>
+            <option value="100+">100+</option>
+          </select>
+        </div>
+
+        <div class="pilot-form-row">
+          <label for="pf-notes">What are you hoping MoonDesk solves? (Optional)</label>
+          <textarea id="pf-notes" name="notes" placeholder="Briefly tell us what you're working on..."></textarea>
+        </div>
+
+        <button type="submit" class="pilot-form-submit" id="pf-submit">
+          Submit application <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+        </button>
+        <p class="pilot-form-sub">We reply within 24 hours &middot; impact@tekforall.org</p>
+      </form>
+
+      <div class="pilot-form-success" id="pilot-success">
+        <i data-lucide="check-circle-2"></i>
+        <h3>Application received</h3>
+        <p>Thank you. We&rsquo;ll be in touch within 24 hours at the email you provided.</p>
+      </div>
     </div>
   </div>
 
@@ -1633,6 +1692,47 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
+
+    async function submitPilotForm(event) {
+      event.preventDefault();
+      var form = document.getElementById('pilot-form');
+      var submitBtn = document.getElementById('pf-submit');
+      var successPanel = document.getElementById('pilot-success');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Submitting...';
+
+      var formData = new FormData(form);
+      try {
+        var res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        var data = await res.json();
+        if (data.success) {
+          form.style.display = 'none';
+          successPanel.classList.add('active');
+          lucide.createIcons();
+          setTimeout(function() {
+            closeModal();
+            setTimeout(function() {
+              form.reset();
+              form.style.display = 'flex';
+              successPanel.classList.remove('active');
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = 'Submit application <i data-lucide="arrow-right" style="width:16px;height:16px"></i>';
+              lucide.createIcons();
+            }, 400);
+          }, 4000);
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        alert('Something went wrong. Please email impact@tekforall.org directly. Error: ' + err.message);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit application <i data-lucide="arrow-right" style="width:16px;height:16px"></i>';
+        lucide.createIcons();
+      }
+    }
 
     function toggleMobileMenu() {
       document.getElementById('mobile-nav').classList.toggle('active');
