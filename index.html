@@ -25,6 +25,10 @@
       --border: #d4cfc8;
       --white: #fff;
       --accent: #1a1a1a;
+      --wa-green: #25D366;
+      --wa-bg-dark: #0b141a;
+      --wa-bubble-in: #1f2c33;
+      --wa-bubble-out: #005c4b;
     }
 
     html { scroll-behavior: smooth; }
@@ -145,6 +149,10 @@
       display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
+    .btn-sub {
+      font-size: 12px; color: var(--ink-muted); margin-top: 8px;
+      font-family: 'DM Mono', monospace; letter-spacing: 1px;
+    }
     .hero-visual { position: relative; display: flex; justify-content: center; align-items: flex-start; }
     .hero-desktop {
       width: 100%; max-width: 620px; border-radius: 16px;
@@ -370,8 +378,6 @@
       text-decoration: none;
     }
 
-
-
     /* ─── Built for (compact card) ────────────────────── */
     .built-for-compact { padding: 80px 24px; }
     .bf-shell {
@@ -406,7 +412,7 @@
     }
     .bf-chip i { width: 16px; height: 16px; color: var(--ink); flex-shrink: 0; }
 
-    /* ─── Luna (full agentic surface) ─────────────────── */
+    /* ─── Luna (merged: conversational + autonomous) ─── */
     .luna-wrap {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: stretch;
@@ -511,6 +517,227 @@
     }
     .luna-action-btn.primary { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
+    /* ─── Autonomous agents grid (below Luna conversational) ─── */
+    .autonomous {
+      max-width: 1280px; margin: 80px auto 0; padding: 0 24px;
+    }
+    .autonomous-head {
+      text-align: center; margin-bottom: 48px;
+    }
+    .autonomous-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: rgba(245,240,235,0.5);
+      margin-bottom: 20px;
+    }
+    .autonomous-eyebrow .live-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #10b981;
+      box-shadow: 0 0 0 4px rgba(16,185,129,0.18);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .autonomous h3 {
+      font-size: clamp(28px, 3.6vw, 40px); font-weight: 800;
+      color: var(--cream); letter-spacing: -1px; line-height: 1.15;
+      margin-bottom: 16px; max-width: 760px; margin-left: auto; margin-right: auto;
+    }
+    .autonomous .auto-sub {
+      font-size: 16px; color: rgba(245,240,235,0.6); line-height: 1.65;
+      max-width: 620px; margin: 0 auto;
+    }
+    .agents-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .agent-card {
+      padding: 22px;
+      background: rgba(245,240,235,0.04);
+      border: 1px solid rgba(245,240,235,0.1);
+      border-radius: 16px;
+      transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .agent-card:hover {
+      transform: translateY(-3px);
+      background: rgba(245,240,235,0.07);
+      border-color: rgba(245,240,235,0.2);
+    }
+    .agent-card-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .agent-card-icon {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: rgba(16,185,129,0.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .agent-card-icon i { color: #10b981; width: 16px; height: 16px; }
+    .agent-card-live {
+      font-family: 'DM Mono', monospace; font-size: 9px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: #10b981;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .agent-card-live::before {
+      content: ""; width: 5px; height: 5px; border-radius: 50%; background: #10b981;
+    }
+    .agent-card h4 {
+      font-size: 14.5px; font-weight: 700; color: var(--cream);
+      margin-bottom: 6px; letter-spacing: -0.2px;
+    }
+    .agent-card p {
+      font-size: 12.5px; color: rgba(245,240,235,0.55); line-height: 1.5;
+    }
+
+    /* ─── WhatsApp section (sleek, modern, matches Luna chat) ─── */
+    .wa-wrap {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 0.95fr; gap: 64px;
+      align-items: center;
+    }
+    .wa-left { max-width: 480px; }
+    .wa-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 14px; background: var(--wa-green);
+      border-radius: 100px; color: white;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .wa-tag i { width: 14px; height: 14px; }
+    .wa-left h3 {
+      font-size: clamp(28px, 3.6vw, 40px); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px;
+    }
+    .wa-left > p {
+      font-size: 17px; color: var(--ink-light); line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .wa-bullets {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+    }
+    .wa-bullets li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 15px; color: var(--ink); line-height: 1.55;
+    }
+    .wa-bullets li i {
+      flex-shrink: 0; width: 18px; height: 18px;
+      margin-top: 2px; color: var(--wa-green);
+    }
+    /* WhatsApp phone mockup */
+    .wa-phone {
+      max-width: 380px; margin: 0 auto;
+      background: #000; border-radius: 36px;
+      padding: 10px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .wa-screen {
+      background: var(--wa-bg-dark);
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+    .wa-statusbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 24px 6px;
+      font-family: -apple-system, sans-serif;
+      font-size: 14px; font-weight: 600; color: white;
+    }
+    .wa-statusbar .indicators {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px;
+    }
+    .wa-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 16px 12px;
+      background: var(--wa-bg-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .wa-back {
+      color: rgba(255,255,255,0.85); font-size: 18px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .wa-back-count {
+      font-size: 14px; color: rgba(255,255,255,0.6);
+    }
+    .wa-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #d56b6b; display: flex;
+      align-items: center; justify-content: center;
+      color: white;
+    }
+    .wa-avatar i { width: 18px; height: 18px; }
+    .wa-name {
+      font-size: 16px; font-weight: 500; color: white;
+    }
+    .wa-thread {
+      padding: 12px 12px 16px;
+      display: flex; flex-direction: column; gap: 6px;
+      min-height: 480px;
+      background: var(--wa-bg-dark);
+      background-image:
+        radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 20px 20px, 30px 30px;
+      background-position: 0 0, 10px 10px;
+    }
+    .wa-date {
+      align-self: center;
+      padding: 4px 10px; background: rgba(31,44,51,0.6);
+      border-radius: 8px;
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 1px; color: rgba(255,255,255,0.55);
+      margin: 6px 0;
+    }
+    .wa-msg {
+      max-width: 78%; padding: 7px 11px 6px;
+      border-radius: 8px;
+      font-size: 13.5px; line-height: 1.4;
+      position: relative;
+    }
+    .wa-msg.out {
+      align-self: flex-end;
+      background: var(--wa-bubble-out);
+      color: #e9edef;
+      border-bottom-right-radius: 2px;
+    }
+    .wa-msg.in {
+      align-self: flex-start;
+      background: var(--wa-bubble-in);
+      color: #e9edef;
+      border-bottom-left-radius: 2px;
+    }
+    .wa-msg .wa-time {
+      font-size: 10px; color: rgba(233,237,239,0.55);
+      float: right; margin-left: 6px; margin-top: 4px;
+      display: inline-flex; align-items: center; gap: 2px;
+    }
+    .wa-msg .wa-time i { width: 12px; height: 12px; color: #53bdeb; }
+    .wa-msg .wa-sig {
+      display: block; margin-top: 6px; padding-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      font-style: italic; font-size: 11.5px;
+      color: rgba(233,237,239,0.55);
+    }
+    .wa-input {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px 12px;
+      background: var(--wa-bg-dark);
+    }
+    .wa-input-box {
+      flex: 1; padding: 9px 14px;
+      background: var(--wa-bubble-in);
+      border-radius: 20px;
+      color: rgba(255,255,255,0.4);
+      font-size: 13px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .wa-input-box i { width: 16px; height: 16px; }
+    .wa-mic {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--wa-green);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .wa-mic i { color: white; width: 18px; height: 18px; }
+
     /* ─── Security (compact row, not full section) ─── */
     .security-row {
       margin-top: 56px;
@@ -535,9 +762,7 @@
       font-size: 12.5px; color: var(--ink-light); line-height: 1.5;
     }
 
-
-
-    /* ─── Roadmap section (toned bg, list + winding path) ─── */
+    /* ─── Roadmap section ─── */
     .roadmap-bg {
       background: #2a2826;
       color: var(--cream);
@@ -679,11 +904,11 @@
       letter-spacing: 1.5px; text-transform: uppercase;
     }
 
-    /* Shipping next — winding timeline */
+    /* Shipping next — winding timeline (3 stops only) */
     .rm-path {
       position: relative;
       padding: 8px 0;
-      min-height: 1180px;
+      min-height: 600px;
     }
     .rm-path-svg {
       position: absolute; top: 0; left: 0;
@@ -745,33 +970,105 @@
       font-size: 13px; color: rgba(245,240,235,0.55); line-height: 1.55;
     }
 
-    .rm-foot {
+    /* ─── Pricing ─── */
+    .pricing { max-width: 1280px; margin: 0 auto; padding: 100px 24px; }
+    .pricing-cards {
       margin-top: 56px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 16px; flex-wrap: wrap;
-      padding: 24px 32px;
-      background: rgba(245,240,235,0.04);
-      border: 1px solid rgba(245,240,235,0.1);
-      border-radius: 16px;
-      font-size: 14px; color: rgba(245,240,235,0.65);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
-    .rm-foot a {
-      color: var(--cream); text-decoration: none;
-      font-weight: 600;
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 16px;
-      background: rgba(245,240,235,0.1);
-      border: 1px solid rgba(245,240,235,0.18);
+    .pricing-card {
+      padding: 32px; background: var(--white);
+      border: 2px solid var(--border); border-radius: 20px;
+      display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+    .pricing-card.featured {
+      background: var(--ink); color: var(--cream);
+      border-color: var(--ink);
+      position: relative;
+    }
+    .pricing-card.featured::after {
+      content: "Most popular";
+      position: absolute; top: -10px; right: 24px;
+      padding: 4px 12px; background: #10b981; color: white;
       border-radius: 100px;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase;
     }
-    .rm-foot a:hover {
-      background: rgba(245,240,235,0.15);
-      border-color: rgba(245,240,235,0.3);
-      transform: translateY(-1px);
+    .pricing-name {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 12px;
     }
+    .pricing-card.featured .pricing-name { color: rgba(245,240,235,0.6); }
+    .pricing-amount {
+      display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .pricing-amount .currency {
+      font-size: 16px; font-weight: 600; color: var(--ink-muted);
+    }
+    .pricing-card.featured .pricing-amount .currency { color: rgba(245,240,235,0.65); }
+    .pricing-amount .figure {
+      font-size: 38px; font-weight: 800; letter-spacing: -1.5px;
+      color: var(--ink); line-height: 1;
+    }
+    .pricing-card.featured .pricing-amount .figure { color: var(--cream); }
+    .pricing-amount .period {
+      font-size: 14px; color: var(--ink-muted);
+    }
+    .pricing-card.featured .pricing-amount .period { color: rgba(245,240,235,0.6); }
+    .pricing-usd {
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      color: var(--ink-muted); margin-bottom: 20px;
+    }
+    .pricing-card.featured .pricing-usd { color: rgba(245,240,235,0.55); }
+    .pricing-divider {
+      height: 1px; background: var(--border);
+      margin: 0 0 20px;
+    }
+    .pricing-card.featured .pricing-divider { background: rgba(245,240,235,0.12); }
+    .pricing-tag {
+      font-size: 13px; font-weight: 600; margin-bottom: 16px;
+      color: var(--ink-light);
+    }
+    .pricing-card.featured .pricing-tag { color: rgba(245,240,235,0.75); }
+    .pricing-features {
+      list-style: none; flex: 1;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 24px;
+    }
+    .pricing-features li {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 13.5px; color: var(--ink); line-height: 1.5;
+    }
+    .pricing-card.featured .pricing-features li { color: var(--cream); }
+    .pricing-features li i {
+      width: 16px; height: 16px; flex-shrink: 0;
+      margin-top: 2px; color: #10b981;
+    }
+    .pricing-cta {
+      padding: 12px 20px; border-radius: 100px;
+      font-size: 14px; font-weight: 600;
+      text-align: center; text-decoration: none;
+      background: var(--cream); color: var(--ink);
+      border: 1.5px solid var(--border);
+      transition: all 0.2s; font-family: inherit; cursor: pointer;
+    }
+    .pricing-cta:hover { background: var(--white); border-color: var(--ink); }
+    .pricing-card.featured .pricing-cta {
+      background: var(--cream); color: var(--ink);
+      border-color: var(--cream);
+    }
+    .pricing-card.featured .pricing-cta:hover { transform: translateY(-1px); }
+    .pricing-foot {
+      text-align: center; margin-top: 32px;
+      font-size: 14px; color: var(--ink-light);
+    }
+    .pricing-foot strong { color: var(--ink); font-weight: 700; }
 
-    /* ─── FAQ ─────────────────────────────────────────── */
+    /* ─── FAQ ─── */
     .faq-list { margin-top: 48px; max-width: 760px; }
     .faq-item {
       border: 2px solid var(--border); border-radius: 16px;
@@ -791,7 +1088,7 @@
     .faq-a.open { max-height: 400px; padding: 0 24px 20px; }
     .faq-a p { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
 
-    /* ─── Final CTA ────────────────────────────────────── */
+    /* ─── Final CTA ─── */
     .final-cta {
       max-width: 1280px; margin: 0 auto 80px; padding: 0 24px;
     }
@@ -820,6 +1117,13 @@
       display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
       position: relative;
     }
+    .final-cta-sub {
+      margin-top: 16px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(245,240,235,0.5);
+      position: relative;
+    }
     .final-cta .btn-light {
       background: var(--cream); color: var(--ink);
       border: 2px solid var(--cream);
@@ -831,7 +1135,7 @@
     }
     .final-cta .btn-ghost:hover { border-color: var(--cream); }
 
-    /* ─── Footer ──────────────────────────────────────── */
+    /* ─── Footer ─── */
     .footer {
       border-top: 1px solid var(--border); padding: 48px 24px;
       max-width: 1280px; margin: 0 auto;
@@ -848,7 +1152,7 @@
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-muted); }
 
-    /* ─── Contact Modal ───────────────────────────────── */
+    /* ─── Modal ─── */
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(26,26,26,0.6);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
@@ -893,7 +1197,7 @@
     }
     .contact-item .contact-value { font-size: 15px; font-weight: 600; margin-top: 2px; }
 
-    /* ─── Mobile Menu ─────────────────────────────────── */
+    /* ─── Mobile Menu ─── */
     .mobile-nav {
       position: fixed; inset: 0; background: var(--cream);
       z-index: 200; padding: 24px; display: flex; flex-direction: column;
@@ -908,7 +1212,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* ─── Animations ──────────────────────────────────── */
+    /* ─── Animations ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -918,7 +1222,7 @@
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
 
-    /* ─── Responsive ──────────────────────────────────── */
+    /* ─── Responsive ─── */
     @media (max-width: 1024px) {
       .rm-grid { grid-template-columns: 1fr; gap: 20px; }
       .rm-header { flex-direction: column; align-items: flex-start; }
@@ -930,11 +1234,11 @@
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
       .pillar { grid-template-columns: 1fr; gap: 32px; }
       .pillar.reverse { direction: ltr; }
-      .built-grid { grid-template-columns: repeat(2, 1fr); }
       .luna-wrap { grid-template-columns: 1fr; gap: 40px; }
       .luna-features { grid-template-columns: 1fr 1fr; }
+      .agents-grid { grid-template-columns: repeat(2, 1fr); }
+      .wa-wrap { grid-template-columns: 1fr; gap: 40px; }
       .security-row { grid-template-columns: repeat(2, 1fr); }
-      .roadmap-columns { grid-template-columns: 1fr; gap: 20px; }
       .pricing-cards { grid-template-columns: 1fr; }
       .pricing-card.featured { order: -1; }
     }
@@ -942,14 +1246,13 @@
       .rm-col { padding: 28px 22px; }
       .rm-list-item { font-size: 14px; }
       .rm-path { min-height: 0; padding-left: 32px; }
-      .rm-path-svg { left: 18px; width: 4px; }
+      .rm-path-svg { display: none; }
       .rm-stop {
         width: 100%; margin-left: 0 !important;
         flex-direction: row !important;
         min-height: 0; margin-bottom: 16px;
       }
       .rm-stop-card { text-align: left !important; }
-      .rm-path-svg { display: none; }
       .rm-path::before {
         content: ""; position: absolute; left: 16px; top: 16px; bottom: 16px;
         width: 2px; background: rgba(245,240,235,0.15);
@@ -979,12 +1282,11 @@
       .pillars-wrap { gap: 72px; }
       .pillar-content h3 { font-size: 26px; }
       .pillar-demo { padding: 20px; }
-      .built-grid { grid-template-columns: 1fr; }
       .luna-features { grid-template-columns: 1fr; }
       .luna-right { padding: 24px; }
+      .agents-grid { grid-template-columns: 1fr; }
       .security-row { grid-template-columns: 1fr; }
-      .roadmap-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .roadmap-col { padding: 28px 24px; }
+      .pricing { padding: 72px 20px; }
       .pricing-card { padding: 28px; }
       .final-cta { margin-bottom: 56px; padding: 0 20px; }
       .final-cta-inner { padding: 48px 24px; border-radius: 24px; }
@@ -1007,6 +1309,7 @@
         <li><a href="#pillars">How it works</a></li>
         <li><a href="#luna">Luna</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="https://app.moondesk.app/signin" class="nav-cta">Sign in</a></li>
       </ul>
@@ -1031,6 +1334,7 @@
       <li><a href="#pillars" onclick="closeMobileMenu()">How it works</a></li>
       <li><a href="#luna" onclick="closeMobileMenu()">Luna</a></li>
       <li><a href="#roadmap" onclick="closeMobileMenu()">Roadmap</a></li>
+      <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
       <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
       <li style="margin-top:16px"><a href="https://app.moondesk.app/signin" class="btn-primary" style="display:block;text-align:center">Sign in</a></li>
     </ul>
@@ -1047,9 +1351,10 @@
         <span class="triad-chip"><i data-lucide="archive"></i> Remember everything.</span>
       </div>
       <div class="hero-ctas animate-in delay-3">
-        <button class="btn-primary" onclick="openModal()">Book a demo <i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
+        <button class="btn-primary" onclick="openModal()">Apply for pilot <i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
         <a href="#pillars" class="btn-secondary">See how it works</a>
       </div>
+      <p class="btn-sub animate-in delay-3">Free 30 days &middot; Limited cohort</p>
     </div>
     <div class="hero-visual animate-in delay-3">
       <img src="images/desktop-screenshot.png" alt="MoonDesk Desktop Dashboard" class="hero-desktop" />
@@ -1065,14 +1370,12 @@
         <span class="connectors-divider"></span>
       </div>
       <div class="connectors-row">
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg>
           </span>
           <span class="connector-name">Gmail<span class="connector-status live">Live</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1086,7 +1389,6 @@
           </span>
           <span class="connector-name">Google Drive<span class="connector-status live">Live</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1098,14 +1400,12 @@
           </span>
           <span class="connector-name">Calendar<span class="connector-status live">Live</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.488" fill="#25D366"/></svg>
           </span>
           <span class="connector-name">WhatsApp<span class="connector-status live">Live</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1115,7 +1415,6 @@
           </span>
           <span class="connector-name">Paystack<span class="connector-status live">Live</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1126,7 +1425,6 @@
           </span>
           <span class="connector-name">Flutterwave<span class="connector-status live">Live</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1135,14 +1433,12 @@
           </span>
           <span class="connector-name">Slack<span class="connector-status">Soon</span></span>
         </span>
-
         <span class="connector">
           <span class="connector-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933z" fill="#000"/></svg>
           </span>
           <span class="connector-name">Notion<span class="connector-status">Soon</span></span>
         </span>
-
       </div>
     </div>
   </div>
@@ -1180,7 +1476,6 @@
 
       <div class="pillars-wrap">
 
-        <!-- Pillar 1: Ask anything -->
         <div class="pillar">
           <div class="pillar-content">
             <div class="pillar-tag"><span class="num">01</span> Ask anything</div>
@@ -1199,7 +1494,7 @@
                 <div class="demo-bar-dot"></div>
                 <div class="demo-bar-dot"></div>
                 <div class="demo-bar-dot"></div>
-                <div class="demo-bar-title">moondesk · ask anything</div>
+                <div class="demo-bar-title">moondesk &middot; ask anything</div>
               </div>
               <div class="demo-body">
                 <div class="demo-query"><i data-lucide="sparkles"></i> What happened with the MTN partnership this week?</div>
@@ -1209,7 +1504,6 @@
           </div>
         </div>
 
-        <!-- Pillar 2: Act instantly -->
         <div class="pillar reverse">
           <div class="pillar-content">
             <div class="pillar-tag"><span class="num">02</span> Act instantly</div>
@@ -1228,7 +1522,7 @@
                 <div class="demo-bar-dot"></div>
                 <div class="demo-bar-dot"></div>
                 <div class="demo-bar-dot"></div>
-                <div class="demo-bar-title">moondesk · proposed action</div>
+                <div class="demo-bar-title">moondesk &middot; proposed action</div>
               </div>
               <div class="demo-body">
                 <div class="demo-query"><i data-lucide="zap"></i> Follow up with contacts we haven't heard from in 30 days.</div>
@@ -1244,7 +1538,6 @@
           </div>
         </div>
 
-        <!-- Pillar 3: Remember everything -->
         <div class="pillar">
           <div class="pillar-content">
             <div class="pillar-tag"><span class="num">03</span> Remember everything</div>
@@ -1263,28 +1556,28 @@
                 <div class="demo-bar-dot"></div>
                 <div class="demo-bar-dot"></div>
                 <div class="demo-bar-dot"></div>
-                <div class="demo-bar-title">moondesk · evidence trail</div>
+                <div class="demo-bar-title">moondesk &middot; evidence trail</div>
               </div>
               <div class="demo-body">
                 <div class="demo-task">
                   <div class="check done"><i data-lucide="check"></i></div>
                   <div class="demo-task-text">
                     <div class="label">Submit Q1 evidence pack to investor</div>
-                    <div class="meta">Approved by Tunde · 3 days ago · <a href="#" class="demo-evidence-link"><i data-lucide="paperclip" style="width:11px;height:11px"></i> 7 files</a></div>
+                    <div class="meta">Approved by Tunde &middot; 3 days ago &middot; <a href="#" class="demo-evidence-link"><i data-lucide="paperclip" style="width:11px;height:11px"></i> 7 files</a></div>
                   </div>
                 </div>
                 <div class="demo-task">
                   <div class="check done"><i data-lucide="check"></i></div>
                   <div class="demo-task-text">
                     <div class="label">Field visit report, Osun State centre</div>
-                    <div class="meta">Approved by Aisha · 1 week ago · <a href="#" class="demo-evidence-link"><i data-lucide="paperclip" style="width:11px;height:11px"></i> 3 files</a></div>
+                    <div class="meta">Approved by Aisha &middot; 1 week ago &middot; <a href="#" class="demo-evidence-link"><i data-lucide="paperclip" style="width:11px;height:11px"></i> 3 files</a></div>
                   </div>
                 </div>
                 <div class="demo-task">
                   <div class="check"></div>
                   <div class="demo-task-text">
                     <div class="label">Quarterly review prep</div>
-                    <div class="meta">Awaiting evidence · Due Friday</div>
+                    <div class="meta">Awaiting evidence &middot; Due Friday</div>
                   </div>
                 </div>
               </div>
@@ -1294,7 +1587,6 @@
 
       </div>
 
-      <!-- Security mini row (folded in here, not standalone section) -->
       <div class="security-row">
         <div class="security-mini">
           <div class="security-mini-icon"><i data-lucide="shield"></i></div>
@@ -1329,7 +1621,7 @@
     </div>
   </section>
 
-  <!-- Built for (compact card) -->
+  <!-- Built for -->
   <section class="section built-for-compact" id="built-for">
     <div class="bf-shell">
       <div class="bf-left">
@@ -1348,15 +1640,15 @@
     </div>
   </section>
 
-  <!-- LUNA (full agentic surface) -->
+  <!-- LUNA: merged conversational + autonomous -->
   <section class="section-full ink" id="luna">
     <div class="section-full-inner">
-      <div class="luna-wrap">
 
+      <div class="luna-wrap">
         <div class="luna-left">
           <div class="section-label"><span class="bar"></span> Luna</div>
-          <h2 class="section-title">The agentic surface of MoonDesk.</h2>
-          <p class="section-subtitle">Luna is the conversational layer over the MoonDesk brain. Ask anything across your organisation, retrieve knowledge from any connected source, and take real action with your approval. Luna doesn't just answer. She works.</p>
+          <h2 class="section-title">Luna. The brain that acts on its own.</h2>
+          <p class="section-subtitle">Luna is the conversational and agentic surface of MoonDesk. Ask her anything across your organisation. Approve drafts and actions in one tap. And while you sleep, eight autonomous agents quietly run in the background, surfacing what matters before anyone has to ask.</p>
 
           <div class="luna-features">
             <div class="luna-feature">
@@ -1376,8 +1668,8 @@
             </div>
             <div class="luna-feature">
               <div class="luna-feature-icon"><i data-lucide="brain"></i></div>
-              <h4>Connected to the brain</h4>
-              <p>Every interaction learns from the organisation's full context. Luna gets sharper as your organisation grows.</p>
+              <h4>Works while you sleep</h4>
+              <p>Eight autonomous agents quietly run every day. Stale deals, overdue work, meeting prep, evidence gaps, more.</p>
             </div>
           </div>
         </div>
@@ -1399,9 +1691,9 @@
           <div class="luna-bubble user">Draft a follow-up to her with the new timeline she requested.</div>
 
           <div class="luna-bubble action">
-            <div class="luna-action-head"><span class="pulse"></span> Proposed action · Draft email</div>
+            <div class="luna-action-head"><span class="pulse"></span> Proposed action &middot; Draft email</div>
             <div class="luna-action-title">To: Aisha Bello (MTN)</div>
-            <div class="luna-action-meta">Subject: Updated partnership timeline · 4 paragraphs ready</div>
+            <div class="luna-action-meta">Subject: Updated partnership timeline &middot; 4 paragraphs ready</div>
             <div class="luna-action-buttons">
               <button class="luna-action-btn primary"><i data-lucide="send" style="width:12px;height:12px;margin-right:4px"></i> Send</button>
               <button class="luna-action-btn">Edit</button>
@@ -1410,21 +1702,160 @@
 
           <div class="luna-bubble user">Schedule a 30-min check-in with her next Tuesday.</div>
           <div class="luna-bubble action">
-            <div class="luna-action-head"><span class="pulse"></span> Proposed action · Schedule meeting</div>
-            <div class="luna-action-title">MTN check-in · Tue, 2:00 PM</div>
-            <div class="luna-action-meta">Aisha confirmed available · Context attached</div>
+            <div class="luna-action-head"><span class="pulse"></span> Proposed action &middot; Schedule meeting</div>
+            <div class="luna-action-title">MTN check-in &middot; Tue, 2:00 PM</div>
+            <div class="luna-action-meta">Aisha confirmed available &middot; Context attached</div>
             <div class="luna-action-buttons">
               <button class="luna-action-btn primary">Confirm</button>
               <button class="luna-action-btn">Reschedule</button>
             </div>
           </div>
         </div>
+      </div>
 
+      <!-- Autonomous agents grid -->
+      <div class="autonomous">
+        <div class="autonomous-head">
+          <div class="autonomous-eyebrow"><span class="live-dot"></span> 8 agents live &middot; 0 prompts required</div>
+          <h3>While you ask. While you sleep. Luna keeps watching.</h3>
+          <p class="auto-sub">Eight autonomous agents run every day inside your workspace. No prompts. No dashboards to check. The right signal, on the right channel, at the right moment.</p>
+        </div>
+
+        <div class="agents-grid">
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="file-bar-chart"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Executive digest</h4>
+            <p>Weekly summary of wins, risks, and action items, delivered to leadership.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="clock-alert"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Stale deal monitor</h4>
+            <p>Flags deals and stakeholders going quiet before they slip through.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="calendar-clock"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Meeting prep</h4>
+            <p>Briefs you the morning of every meeting with context on attendees and topics.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="arrow-up-narrow-wide"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Escalation ladder</h4>
+            <p>Surfaces overdue work, routes to the right manager, escalates when stuck.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="sunrise"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Personal morning brief</h4>
+            <p>Your priorities for the day, delivered to WhatsApp at 7am local time.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="file-search"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Evidence gap detection</h4>
+            <p>Detects tasks marked done without supporting evidence. Asks for it.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="git-branch"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Bottleneck detector</h4>
+            <p>Identifies who's blocking the most downstream work, suggests resolution.</p>
+          </div>
+          <div class="agent-card">
+            <div class="agent-card-head">
+              <div class="agent-card-icon"><i data-lucide="layers"></i></div>
+              <span class="agent-card-live">Live</span>
+            </div>
+            <h4>Multi-action proposer</h4>
+            <p>Bundles related follow-ups into one approval. Approve five sends in one tap.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHATSAPP: Luna meets you where you work -->
+  <section class="section" id="whatsapp">
+    <div class="wa-wrap">
+      <div class="wa-left">
+        <div class="wa-tag"><i data-lucide="message-circle"></i> WhatsApp</div>
+        <h3>Luna lives where your team already works.</h3>
+        <p>Send Luna a message on WhatsApp. Get the same cited answer, from the same brain, that you would inside the app. Ask questions, get briefings, approve drafts, all from your phone with the keyboard you already use.</p>
+        <ul class="wa-bullets">
+          <li><i data-lucide="check-circle-2"></i> Ask any question, get a cited answer in under 8 seconds</li>
+          <li><i data-lucide="check-circle-2"></i> Same retrieval, same citations, same brain as the web app</li>
+          <li><i data-lucide="check-circle-2"></i> Receive proactive briefings and morning priorities</li>
+          <li><i data-lucide="check-circle-2"></i> Reply with confirmations to approve drafts and follow-ups</li>
+        </ul>
+      </div>
+
+      <div class="wa-phone">
+        <div class="wa-screen">
+          <div class="wa-statusbar">
+            <span>8:35</span>
+            <span class="indicators">
+              <i data-lucide="signal" style="width:14px;height:14px"></i>
+              <i data-lucide="wifi" style="width:14px;height:14px"></i>
+              <span>47%</span>
+            </span>
+          </div>
+          <div class="wa-header">
+            <span class="wa-back">&lt;</span>
+            <span class="wa-back-count">41</span>
+            <div class="wa-avatar"><i data-lucide="user"></i></div>
+            <div class="wa-name">Moondesk</div>
+          </div>
+          <div class="wa-thread">
+            <div class="wa-date">Tuesday</div>
+            <div class="wa-msg out">
+              How many opportunities do we have?
+              <span class="wa-time">5:21 PM <i data-lucide="check-check"></i></span>
+            </div>
+            <div class="wa-msg in">
+              We have 23 opportunities total, with 22 in the new stage and 1 archived.
+              <span class="wa-time">5:21 PM</span>
+            </div>
+            <div class="wa-msg out">
+              What's overdue this week?
+              <span class="wa-time">5:22 PM <i data-lucide="check-check"></i></span>
+            </div>
+            <div class="wa-msg in">
+              Eight high-priority tasks are overdue this week, spanning two key programmes. The Tek4Teachers Pilot has five overdue items including testimonial planning, scheduling, survey analysis, artifact collection, and selecting top examples for reporting. The Online Events and Seminars programme has three overdue tasks: technical review, design and communications rollout, and seminar delivery.
+              <span class="wa-sig">_MoonDesk Brain - 8 sources_</span>
+              <span class="wa-time">5:22 PM</span>
+            </div>
+          </div>
+          <div class="wa-input">
+            <div class="wa-input-box">
+              <i data-lucide="plus"></i>
+              <span>Message</span>
+            </div>
+            <div class="wa-mic"><i data-lucide="mic"></i></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ROADMAP (toned bg, list + timeline) -->
+  <!-- ROADMAP -->
   <section class="section-full roadmap-bg" id="roadmap">
     <div class="section-full-inner">
 
@@ -1436,14 +1867,12 @@
         </div>
         <div class="rm-meta">
           <div class="rm-meta-pill"><span class="dot live"></span> 13 Live</div>
-          <div class="rm-meta-pill"><span class="dot next"></span> 6 Shipping next</div>
+          <div class="rm-meta-pill"><span class="dot next"></span> 3 Shipping next</div>
           <div class="rm-meta-date">Updated &middot; May 2026</div>
         </div>
       </div>
 
       <div class="rm-grid">
-
-        <!-- LIVE NOW (list, dense, with subtle separators) -->
         <div class="rm-col rm-col-live">
           <div class="rm-col-header">
             <div class="rm-col-head-row">
@@ -1458,7 +1887,7 @@
             <li class="rm-list-item"><span class="rm-list-num">01</span><i data-lucide="folder-kanban"></i><span class="rm-list-text">Work management</span></li>
             <li class="rm-list-item"><span class="rm-list-num">02</span><i data-lucide="users"></i><span class="rm-list-text">Stakeholder intelligence</span></li>
             <li class="rm-list-item"><span class="rm-list-num">03</span><i data-lucide="message-square"></i><span class="rm-list-text">Shared communication</span></li>
-            <li class="rm-list-item rm-list-feature"><span class="rm-list-num">04</span><i data-lucide="brain"></i><span class="rm-list-text">MoonDesk Brain</span><span class="rm-list-flag">Core</span></li>
+            <li class="rm-list-item rm-list-feature"><span class="rm-list-num">04</span><i data-lucide="brain"></i><span class="rm-list-text">Luna</span><span class="rm-list-flag">Core</span></li>
             <li class="rm-list-item"><span class="rm-list-num">05</span><i data-lucide="search"></i><span class="rm-list-text">Organisational search</span></li>
             <li class="rm-list-item"><span class="rm-list-num">06</span><i data-lucide="plug-zap"></i><span class="rm-list-text">Google Workspace</span></li>
             <li class="rm-list-item"><span class="rm-list-num">07</span><i data-lucide="file-text"></i><span class="rm-list-text">Deep file indexing</span></li>
@@ -1471,7 +1900,6 @@
           </ul>
         </div>
 
-        <!-- SHIPPING NEXT (winding timeline path with alternating stops) -->
         <div class="rm-col rm-col-next">
           <div class="rm-col-header">
             <div class="rm-col-head-row">
@@ -1483,8 +1911,8 @@
           </div>
 
           <div class="rm-path">
-            <svg class="rm-path-svg" viewBox="0 0 400 1200" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M 200 30 Q 60 130 200 230 Q 340 330 200 430 Q 60 530 200 630 Q 340 730 200 830 Q 60 930 200 1030 Q 340 1110 200 1170"
+            <svg class="rm-path-svg" viewBox="0 0 400 600" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 200 30 Q 60 130 200 230 Q 340 330 200 430 Q 60 530 200 580"
                     fill="none" stroke="rgba(245,240,235,0.18)" stroke-width="2" stroke-dasharray="6 6" />
             </svg>
 
@@ -1510,49 +1938,88 @@
               <div class="rm-stop-marker"><span>03</span></div>
               <div class="rm-stop-card">
                 <div class="rm-stop-icon"><i data-lucide="activity"></i></div>
-                <div class="rm-stop-title">Closed-loop monitoring</div>
-                <div class="rm-stop-desc">Stale deals, missed follow-ups, cash-flow signals, operational risks, surfaced before they become problems.</div>
+                <div class="rm-stop-title">Closed-loop expansion</div>
+                <div class="rm-stop-desc">Cashflow signals, sentiment shifts, anomaly detection. Surfaced before they become problems.</div>
               </div>
             </div>
-
-            <div class="rm-stop rm-stop-left">
-              <div class="rm-stop-marker"><span>04</span></div>
-              <div class="rm-stop-card">
-                <div class="rm-stop-icon"><i data-lucide="building"></i></div>
-                <div class="rm-stop-title">Multi-workspace</div>
-                <div class="rm-stop-desc">Query across branches, departments, regions, or partner organisations with permissions intact.</div>
-              </div>
-            </div>
-
-            <div class="rm-stop rm-stop-right">
-              <div class="rm-stop-marker"><span>05</span></div>
-              <div class="rm-stop-card">
-                <div class="rm-stop-icon"><i data-lucide="terminal"></i></div>
-                <div class="rm-stop-title">API and agent layer</div>
-                <div class="rm-stop-desc">Build custom workflows, internal tools, and specialised AI agents on top of your MoonDesk brain.</div>
-              </div>
-            </div>
-
-            <div class="rm-stop rm-stop-left">
-              <div class="rm-stop-marker"><span>06</span></div>
-              <div class="rm-stop-card">
-                <div class="rm-stop-icon"><i data-lucide="bot"></i></div>
-                <div class="rm-stop-title">Agentic operations</div>
-                <div class="rm-stop-desc">Scoped AI agents for operations, M&amp;E, client relations, finance, and reporting. Approval built in.</div>
-              </div>
-            </div>
-
           </div>
         </div>
-
-      </div>
-
-      <div class="rm-foot">
-        <span>Want something specific?</span>
-        <a href="mailto:impact@tekforall.org">Tell us what to build next <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
 
     </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-label"><span class="bar"></span> Pricing</div>
+    <h2 class="section-title">Simple pricing. Built for the work you do.</h2>
+    <p class="section-subtitle">Start small. Scale when ready. Every plan includes Luna, all the core operating tools, and a 30-day pilot.</p>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-amount">
+          <span class="currency">&#8358;</span>
+          <span class="figure">29,999</span>
+          <span class="period">/ month</span>
+        </div>
+        <div class="pricing-usd">~ $29 per workspace</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-tag">For small teams getting started.</div>
+        <ul class="pricing-features">
+          <li><i data-lucide="check"></i> Up to 5 users</li>
+          <li><i data-lucide="check"></i> 3 connectors</li>
+          <li><i data-lucide="check"></i> 500 Luna queries / month</li>
+          <li><i data-lucide="check"></i> Tasks, programmes, messaging</li>
+          <li><i data-lucide="check"></i> Calendar &amp; shared mail</li>
+        </ul>
+        <button class="pricing-cta" onclick="openModal()">Apply for pilot</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-name">Professional</div>
+        <div class="pricing-amount">
+          <span class="currency">&#8358;</span>
+          <span class="figure">85,000</span>
+          <span class="period">/ month</span>
+        </div>
+        <div class="pricing-usd">~ $99 per workspace</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-tag">For growing teams and full operations.</div>
+        <ul class="pricing-features">
+          <li><i data-lucide="check"></i> Unlimited users</li>
+          <li><i data-lucide="check"></i> All connectors</li>
+          <li><i data-lucide="check"></i> Unlimited Luna queries</li>
+          <li><i data-lucide="check"></i> CRM &amp; Opportunity Radar</li>
+          <li><i data-lucide="check"></i> Autonomous agents &amp; action layer</li>
+          <li><i data-lucide="check"></i> Reports &amp; analytics</li>
+        </ul>
+        <button class="pricing-cta" onclick="openModal()">Apply for pilot</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-name">Enterprise</div>
+        <div class="pricing-amount">
+          <span class="currency">&#8358;</span>
+          <span class="figure">255,000</span>
+          <span class="period">/ month</span>
+        </div>
+        <div class="pricing-usd">~ $299 per workspace</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-tag">For larger organisations and groups.</div>
+        <ul class="pricing-features">
+          <li><i data-lucide="check"></i> Multi-workspace</li>
+          <li><i data-lucide="check"></i> API access</li>
+          <li><i data-lucide="check"></i> Custom agents</li>
+          <li><i data-lucide="check"></i> SSO &amp; dedicated success</li>
+          <li><i data-lucide="check"></i> SOC 2 (in progress)</li>
+          <li><i data-lucide="check"></i> Priority support</li>
+        </ul>
+        <button class="pricing-cta" onclick="openModal()">Talk to us</button>
+      </div>
+    </div>
+
+    <p class="pricing-foot"><strong>Free 30-day pilot</strong> for NGOs and mission-driven organisations. Annual billing available with 2 months free.</p>
   </section>
 
   <!-- FAQ -->
@@ -1570,7 +2037,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">How does Luna actually work?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Luna is the conversational surface over the MoonDesk brain. She reads your organisation's full context, answers questions, drafts emails, creates tasks, schedules meetings, runs multi-step playbooks. She never takes write actions without your approval. Every action is a proposal you accept, edit, or reject.</p></div>
+        <div class="faq-a"><p>Luna is the intelligence layer of MoonDesk. She reads your organisation's full context, answers questions, drafts emails, creates tasks, schedules meetings, runs multi-step playbooks. She never takes write actions without your approval. Every action is a proposal you accept, edit, or reject.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">What about security and compliance?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
@@ -1582,15 +2049,15 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Can I use MoonDesk on mobile?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Yes. MoonDesk is fully responsive. Phone, tablet, desktop. Voice queries work on mobile browsers too where the browser supports it.</p></div>
+        <div class="faq-a"><p>Yes. MoonDesk is fully responsive. Phone, tablet, desktop. You can also message Luna directly on WhatsApp.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">How fast can we get started?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>Book a demo and we'll set up your workspace, invite your team, connect Google Workspace, and have you live within a day. Onboarding is white-glove for every new organisation.</p></div>
+        <div class="faq-a"><p>Apply for a pilot and we'll set up your workspace, invite your team, connect Google Workspace, and have you live within a day. Onboarding is white-glove for every new organisation.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">What's your refund policy?<i data-lucide="plus" style="width:18px;height:18px"></i></button>
-        <div class="faq-a"><p>7-day money-back guarantee for first-time customers. If MoonDesk isn't a fit, email <a href="mailto:support@moondesk.app" style="color:var(--ink);text-decoration:underline;">support@moondesk.app</a> within 7 days of first payment and we'll refund you in full.</p></div>
+        <div class="faq-a"><p>30-day free pilot for every new organisation. If MoonDesk isn't a fit, you walk away with no charge. For paid plans, we offer a 7-day money-back guarantee on first payment.</p></div>
       </div>
     </div>
   </section>
@@ -1599,11 +2066,12 @@
   <section class="final-cta">
     <div class="final-cta-inner">
       <h2>Your organisation already has the answers. We just help you find them.</h2>
-      <p>Book a 20-minute demo. We'll show you MoonDesk on your data, or set up a sandbox workspace if you want to try it first.</p>
+      <p>Apply for a pilot. We'll set up your workspace, connect your tools, and have Luna live on your data within a day.</p>
       <div class="final-cta-buttons">
-        <button class="btn-primary btn-light" onclick="openModal()">Book a demo <i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
+        <button class="btn-primary btn-light" onclick="openModal()">Apply for pilot <i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
         <a href="#pillars" class="btn-primary btn-ghost">See how it works</a>
       </div>
+      <p class="final-cta-sub">Free 30 days &middot; Limited cohort</p>
     </div>
   </section>
 
@@ -1617,21 +2085,22 @@
       <li><a href="#pillars">How it works</a></li>
       <li><a href="#luna">Luna</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="/privacy">Privacy</a></li>
       <li><a href="/terms">Terms</a></li>
       <li><a href="mailto:impact@tekforall.org">Contact</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2026 MoonDesk · A Tek4All product</p>
+    <p class="footer-copy">&copy; 2026 MoonDesk &middot; A Tek4All product</p>
   </footer>
 
   <!-- Contact Modal -->
   <div class="modal-overlay" id="contact-modal">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal()" aria-label="Close"><i data-lucide="x" style="width:16px;height:16px"></i></button>
-      <h2>Get in touch</h2>
-      <p class="modal-sub">Book a demo, ask questions, or learn how MoonDesk can work for your organisation.</p>
-      <a href="mailto:impact@tekforall.org" class="contact-item">
+      <h2>Apply for pilot</h2>
+      <p class="modal-sub">Free 30 days. Limited cohort. Tell us about your organisation and we'll set up your workspace.</p>
+      <a href="mailto:impact@tekforall.org?subject=MoonDesk%20Pilot%20Application" class="contact-item">
         <div class="contact-icon"><i data-lucide="mail" style="width:20px;height:20px"></i></div>
         <div><div class="contact-label">Email</div><div class="contact-value">impact@tekforall.org</div></div>
       </a>
@@ -1686,7 +2155,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.problem-card, .bf-chip, .pillar, .rm-tile, .rm-edge, .security-mini').forEach(function(el) {
+    document.querySelectorAll('.problem-card, .bf-chip, .pillar, .agent-card, .pricing-card, .security-mini').forEach(function(el) {
       el.style.opacity = '0';
       el.style.animation = 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards';
       el.style.animationPlayState = 'paused';
