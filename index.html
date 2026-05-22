@@ -683,7 +683,7 @@
     .rm-path {
       position: relative;
       padding: 8px 0;
-      min-height: 600px;
+      min-height: 580px;
     }
     .rm-path-svg {
       position: absolute; top: 0; left: 0;
@@ -693,8 +693,8 @@
     .rm-stop {
       position: relative;
       display: flex; align-items: center; gap: 16px;
-      width: 50%;
-      min-height: 180px;
+      width: 48%;
+      min-height: 160px;
       padding: 14px 0;
     }
     .rm-stop-right { margin-left: 50%; }
@@ -892,6 +892,157 @@
       text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink-muted);
     }
     .contact-item .contact-value { font-size: 15px; font-weight: 600; margin-top: 2px; }
+
+
+    /* ─── Pilot application form (hardened) ─── */
+    .modal-card.wide {
+      max-width: 480px;
+      padding: 36px 32px;
+    }
+    .modal-card.wide h2 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .modal-card.wide .modal-sub {
+      font-size: 14px;
+      color: var(--ink-light);
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+    .pilot-form {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      margin: 0 !important;
+    }
+    .pilot-form-row {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+      margin: 0 !important;
+    }
+    .pilot-form label {
+      font-family: 'DM Mono', monospace !important;
+      font-size: 10px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1.5px !important;
+      color: var(--ink-muted) !important;
+      font-weight: 500 !important;
+      display: block !important;
+      margin: 0 !important;
+    }
+    .pilot-form input[type="text"],
+    .pilot-form input[type="email"],
+    .pilot-form select,
+    .pilot-form textarea {
+      width: 100% !important;
+      padding: 11px 14px !important;
+      background: var(--cream) !important;
+      border: 1.5px solid var(--border) !important;
+      border-radius: 10px !important;
+      font-family: 'DM Sans', -apple-system, sans-serif !important;
+      font-size: 14px !important;
+      color: var(--ink) !important;
+      line-height: 1.4 !important;
+      box-sizing: border-box !important;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      transition: border-color 0.2s, background 0.2s !important;
+      margin: 0 !important;
+    }
+    .pilot-form select {
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23888%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 14px center !important;
+      padding-right: 36px !important;
+    }
+    .pilot-form input:focus,
+    .pilot-form select:focus,
+    .pilot-form textarea:focus {
+      outline: none !important;
+      border-color: var(--ink) !important;
+      background-color: var(--white) !important;
+    }
+    .pilot-form textarea {
+      resize: vertical !important;
+      min-height: 70px !important;
+    }
+    .pilot-form input::placeholder,
+    .pilot-form textarea::placeholder {
+      color: var(--ink-muted) !important;
+      opacity: 0.6 !important;
+      font-family: 'DM Sans', -apple-system, sans-serif !important;
+    }
+    .pilot-form-submit {
+      margin-top: 8px !important;
+      padding: 13px 24px !important;
+      background: var(--ink) !important;
+      color: var(--cream) !important;
+      border: 2px solid var(--ink) !important;
+      border-radius: 100px !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      font-family: 'DM Sans', -apple-system, sans-serif !important;
+      cursor: pointer !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+    .pilot-form-submit:hover {
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+    }
+    .pilot-form-submit:disabled {
+      opacity: 0.6 !important;
+      cursor: not-allowed !important;
+      transform: none !important;
+    }
+    .pilot-form-sub {
+      font-size: 11px !important;
+      color: var(--ink-muted) !important;
+      text-align: center !important;
+      margin-top: 6px !important;
+      font-family: 'DM Mono', monospace !important;
+      letter-spacing: 1px !important;
+      line-height: 1.4 !important;
+    }
+    .pilot-form-success {
+      display: none !important;
+      padding: 28px 20px !important;
+      background: rgba(16,185,129,0.06) !important;
+      border: 1.5px solid rgba(16,185,129,0.25) !important;
+      border-radius: 14px !important;
+      text-align: center !important;
+      margin-top: 8px !important;
+    }
+    .pilot-form-success.active {
+      display: block !important;
+    }
+    .pilot-form-success i {
+      width: 36px !important;
+      height: 36px !important;
+      color: #10b981 !important;
+      margin: 0 auto 14px !important;
+      display: block !important;
+    }
+    .pilot-form-success h3 {
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      margin-bottom: 8px !important;
+      color: var(--ink) !important;
+    }
+    .pilot-form-success p {
+      font-size: 13.5px !important;
+      color: var(--ink-light) !important;
+      line-height: 1.55 !important;
+      margin: 0 !important;
+    }
 
     /* ─── Mobile Menu ─────────────────────────────────── */
     .mobile-nav {
@@ -1483,8 +1634,8 @@
           </div>
 
           <div class="rm-path">
-            <svg class="rm-path-svg" viewBox="0 0 400 1200" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M 200 30 Q 60 130 200 230 Q 340 330 200 430 Q 60 530 200 580"
+            <svg class="rm-path-svg" viewBox="0 0 400 600" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 200 50 Q 340 150 200 280 Q 60 410 200 540"
                     fill="none" stroke="rgba(245,240,235,0.18)" stroke-width="2" stroke-dasharray="6 6" />
             </svg>
 
@@ -1520,13 +1671,7 @@
         </div>
 
       </div>
-
-      <div class="rm-foot">
-        <span>Want something specific?</span>
-        <a href="mailto:impact@tekforall.org">Tell us what to build next <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
-      </div>
-
-    </div>
+</div>
   </section>
 
   <!-- FAQ -->
